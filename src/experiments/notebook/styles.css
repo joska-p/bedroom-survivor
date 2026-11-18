@@ -5,12 +5,6 @@
   margin-top: var(--pg-space-8);
 }
 
-.pg-note {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-4);
-}
-
 .pg-note h1 {
   margin: 0;
   font-size: var(--pg-font-size-2xl);
@@ -44,14 +38,6 @@
   font-style: italic;
 }
 
-.pg-note pre {
-  overflow-x: auto;
-  margin: 0;
-  padding: var(--pg-space-3);
-  border-radius: var(--pg-radius-sm);
-  background-color: color-mix(in oklab, var(--pg-color-neutral) 40%, transparent);
-}
-
 .pg-note pre code,
 .pg-note :not(pre) > code {
   font-family: var(--pg-font-mono);
@@ -65,7 +51,7 @@
 
 .pg-note__symbol {
   font-family: var(--pg-font-mono);
-  color: var(--pg-color-orange);
+  color: var(--pg-text-muted);
 }
 
 .pg-note figure {
@@ -97,17 +83,11 @@
 }
 
 .pg-log__meta {
-  color: color-mix(in oklab, var(--pg-surface-foreground) 70%, transparent);
+  color: var(--pg-text-muted);
   font-size: var(--pg-font-size-sm);
   line-height: var(--pg-line-height-normal);
 }
 
 .pg-logs--compact .pg-log__meta {
   display: none;
-}
-
-.pg-notebook__controls {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-4);
 }

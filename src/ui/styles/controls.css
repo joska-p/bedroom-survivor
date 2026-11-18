@@ -1,7 +1,8 @@
 /*
  * Shared building blocks for experiment stages and panels.
- * Used by every Tier A experiment: intro copy, status line, native controls
- * and panel buttons. Experiment stylesheets only add what is specific to them.
+ * Used by every Tier A experiment: intro copy, status line, native controls,
+ * panel buttons and the reusable layout primitives. Experiment stylesheets
+ * only add what is specific to them.
  */
 
 .pg-intro {
@@ -22,7 +23,22 @@
 }
 
 .pg-status {
+  margin: 0;
   font-family: var(--pg-font-mono);
+  font-size: var(--pg-font-size-sm);
+}
+
+.pg-status--spaced {
+  margin-top: var(--pg-space-4);
+}
+
+.pg-hint {
+  margin: 0;
+  color: var(--pg-text-muted);
+  font-size: var(--pg-font-size-sm);
+}
+
+.pg-back-link {
   font-size: var(--pg-font-size-sm);
 }
 
@@ -30,7 +46,8 @@
 .pg-shell__content button,
 .pg-button {
   min-height: var(--pg-layout-control-touch-target);
-  border: 1px solid currentColor;
+  padding: 0 var(--pg-space-3);
+  border: var(--pg-border-hairline) solid currentColor;
   border-radius: var(--pg-radius-sm);
   background-color: transparent;
   color: inherit;
@@ -40,6 +57,17 @@
 .pg-shell__content button:hover,
 .pg-button:hover {
   background-color: var(--pg-color-neutral);
+}
+
+.pg-button--link {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.pg-button--sm {
+  font-size: var(--pg-font-size-sm);
 }
 
 .pg-control {
@@ -55,7 +83,6 @@
   justify-content: space-between;
 }
 
-/* Stacked control: full-width text input or textarea (promoted from atlas). */
 .pg-control--stacked {
   align-items: stretch;
 }
@@ -71,7 +98,7 @@
   font: inherit;
   color: inherit;
   background: var(--pg-surface-background);
-  border: 1px solid currentColor;
+  border: var(--pg-border-hairline) solid currentColor;
   border-radius: var(--pg-radius-sm);
   padding: var(--pg-space-2) var(--pg-space-3);
   resize: vertical;
@@ -89,6 +116,67 @@
 
 .pg-control output {
   font-family: var(--pg-font-mono);
+}
+
+/* Shared layout primitives. */
+.pg-row {
+  display: flex;
+  align-items: center;
+  gap: var(--pg-space-2);
+}
+
+.pg-row--lg {
+  gap: var(--pg-space-4);
+}
+
+.pg-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pg-space-2);
+}
+
+.pg-stack--md {
+  gap: var(--pg-space-3);
+}
+
+.pg-stack--lg {
+  gap: var(--pg-space-4);
+}
+
+.pg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pg-space-2);
+}
+
+.pg-actions--center {
+  align-items: center;
+}
+
+.pg-actions--lg {
+  gap: var(--pg-space-3);
+}
+
+.pg-grid--2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--pg-space-2);
+}
+
+.pg-auto-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--pg-grid-min, var(--pg-layout-card-min-width)), 1fr)
+  );
+  gap: var(--pg-space-3);
+}
+
+/* 720px mirrors --pg-breakpoint-narrow-max; custom properties are invalid in @media. */
+@media (max-width: 720px) {
+  .pg-auto-grid--collapse {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Shared canvas viewport for the Tier B experiments. */
@@ -120,7 +208,7 @@
 .pg-canvas__error {
   position: absolute;
   inset: var(--pg-space-4);
-  max-width: 60ch;
+  max-width: var(--pg-layout-text-max-width);
   margin: auto;
   padding: var(--pg-space-3) var(--pg-space-4);
   border: var(--pg-border-hairline) solid currentColor;
@@ -139,7 +227,7 @@
 /* Shared disabled state for panel and standalone buttons. */
 .pg-shell__content button:disabled,
 .pg-button:disabled {
-  opacity: 0.5;
+  opacity: var(--pg-disabled-opacity);
   cursor: not-allowed;
 }
 
@@ -173,6 +261,13 @@
   font-weight: var(--pg-font-weight-semibold);
 }
 
+/* Panel title without the section separator margin. */
+.pg-panel-title {
+  margin: 0;
+  font-size: var(--pg-font-size-sm);
+  font-weight: var(--pg-font-weight-semibold);
+}
+
 /* Badge : petite étiquette arrondie, texte mono. */
 .pg-badge {
   display: inline-flex;
@@ -186,6 +281,57 @@
   line-height: var(--pg-line-height-normal);
 }
 
+/* Blocs de code partagés : défilement et hauteur plafonnée. */
+.pg-code {
+  max-height: var(--pg-layout-code-max-height);
+  margin: 0;
+  padding: var(--pg-space-3);
+  overflow: auto;
+  border-radius: var(--pg-radius-sm);
+  background-color: var(--pg-surface-code);
+  font-family: var(--pg-font-mono);
+  font-size: var(--pg-font-size-sm);
+}
+
+.pg-code code {
+  font: inherit;
+}
+
+.pg-code--wrap {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Échantillons de couleur et champs natifs. */
+.pg-color-swatch {
+  flex-shrink: 0;
+  width: var(--pg-layout-color-swatch-width);
+  height: var(--pg-layout-color-swatch-height);
+  border: var(--pg-border-hairline) solid var(--pg-color-neutral);
+  border-radius: var(--pg-radius-sm);
+}
+
+.pg-color-swatch--bare {
+  border: 0;
+  border-radius: var(--pg-radius-none);
+}
+
+.pg-color-input {
+  width: var(--pg-layout-color-swatch-width);
+  height: var(--pg-layout-color-swatch-height);
+  padding: var(--pg-layout-color-swatch-pad);
+  border: var(--pg-border-hairline) solid currentColor;
+  border-radius: var(--pg-radius-sm);
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.pg-color-input--bare {
+  padding: 0;
+  border: 0;
+}
+
 /* État vide : aucun résultat, texte centré et atténué. */
 .pg-empty {
   display: flex;
@@ -194,8 +340,18 @@
   justify-content: center;
   gap: var(--pg-space-3);
   padding: var(--pg-space-8);
-  color: color-mix(in oklab, var(--pg-surface-foreground) 60%, transparent);
+  color: var(--pg-text-muted);
   text-align: center;
+}
+
+.pg-empty--fill {
+  flex: 1;
+  min-height: var(--pg-layout-canvas-viewport-min-height);
+  border-radius: var(--pg-radius-lg);
+}
+
+.pg-empty--dashed {
+  border: var(--pg-border-hairline) dashed var(--pg-color-neutral);
 }
 
 /* État d’erreur : bordure et texte erreur, fond mixte. */
@@ -230,19 +386,13 @@
   border: var(--pg-layout-spinner-ring-width) solid currentColor;
   border-top-color: transparent;
   border-radius: var(--pg-radius-full);
-  animation: pg-loading-spin var(--pg-motion-duration-normal) linear
+  animation: pg-loading-spin var(--pg-motion-duration-normal) var(--pg-motion-easing-linear)
     var(--pg-motion-iteration-infinite);
 }
 
 @keyframes pg-loading-spin {
   to {
     transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pg-loading::before {
-    animation: none;
   }
 }
 

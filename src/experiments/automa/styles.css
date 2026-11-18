@@ -1,22 +1,19 @@
-/* Automa additions: stage layout and panel sections. Canvas and controls come from ui/styles/. */
+/* Automa additions: signature canvas sizing, panel sections and state styling. */
 
-.pg-automa-stage {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-3);
-}
-
-.pg-automa-stage .pg-canvas-viewport {
+.pg-stage--compact .pg-canvas-viewport {
   flex: 0 0 auto;
-  height: clamp(320px, 62dvh, 860px);
+  height: clamp(
+    var(--pg-layout-automa-canvas-min-height),
+    var(--pg-layout-automa-canvas-preferred-height),
+    var(--pg-layout-automa-canvas-max-height)
+  );
 }
 
 .pg-automa__hint {
   margin: 0;
-  color: var(--pg-surface-foreground);
+  color: var(--pg-text-muted);
   font-family: var(--pg-font-mono);
   font-size: var(--pg-font-size-xs);
-  opacity: 0.75;
 }
 
 .pg-automa__section {
@@ -33,12 +30,6 @@
   font-weight: var(--pg-font-weight-semibold);
 }
 
-.pg-automa__actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--pg-space-2);
-}
-
 .pg-automa__readout {
   display: flex;
   align-items: center;
@@ -52,17 +43,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-}
-
-.pg-automa__color input[type="color"] {
-  width: var(--pg-layout-color-swatch-width);
-  height: var(--pg-layout-color-swatch-height);
-  padding: var(--pg-layout-color-swatch-pad);
-  border: var(--pg-border-hairline) solid currentColor;
-  border-radius: var(--pg-radius-sm);
-  background-color: transparent;
-  color: inherit;
-  cursor: pointer;
 }
 
 .pg-shell__content button[aria-pressed="true"] {

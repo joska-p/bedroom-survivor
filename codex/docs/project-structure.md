@@ -8,7 +8,6 @@ DOM helpers in `ui/`, and pure engines in `lib/`.
 ```text
 src/
   index.html                  home page
-  index.css                   home-only styles
   experiments/
     <slug>/
       index.html              page entry
@@ -29,8 +28,12 @@ src/
     theme.ts                  light/dark theme
     page.ts                   shared page bootstrap
     styles/
-      base.css                tokens + reset + controls
-      page.css                base + shell
+      tokens.css              all --pg-* design tokens
+      reset.css               reset, base typography, focus, reduced motion
+      controls.css            shared controls, states and layout primitives
+      shell.css               stage + panel geometry
+      light-pages.css         home and Art Canvas index family
+      main.css                shared entry: imports + radial wash
   lib/
     randomart/                pure engines
     surface/

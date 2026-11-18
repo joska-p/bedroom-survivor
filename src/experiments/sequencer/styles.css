@@ -1,41 +1,8 @@
-/* Sequencer-specific layout on top of the shared shell and control classes. */
-
-.pg-sequencer-stage {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-4);
-}
-
-.pg-sequencer-stage .pg-canvas-viewport {
-  flex: 1;
-}
-
-.pg-sequencer__hint {
-  color: var(--pg-color-neutral);
-  font-size: var(--pg-font-size-sm);
-}
+/* Sequencer-specific layer editor on top of the shared shell and control classes. */
 
 .pg-sequencer__section {
-  border-top: 1px solid var(--pg-color-neutral);
   padding-top: var(--pg-space-3);
-}
-
-.pg-sequencer__section h3 {
-  margin: 0 0 var(--pg-space-2);
-  font-size: var(--pg-font-size-sm);
-  font-weight: var(--pg-font-weight-semibold);
-}
-
-.pg-sequencer__theme,
-.pg-sequencer__section > button {
-  min-height: var(--pg-layout-control-touch-target);
-  padding: 0 var(--pg-space-3);
-}
-
-.pg-sequencer__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--pg-space-3);
+  border-top: var(--pg-border-hairline) solid var(--pg-color-neutral);
 }
 
 .pg-sequencer__layers {
@@ -58,7 +25,7 @@
 }
 
 .pg-sequencer__layer-row button {
-  min-width: 2.5rem;
+  min-width: var(--pg-layout-control-touch-target);
 }
 
 .pg-sequencer__options {
@@ -66,7 +33,7 @@
   gap: var(--pg-space-2);
   margin-top: var(--pg-space-3);
   padding: var(--pg-space-3);
-  border: 1px solid var(--pg-color-neutral);
+  border: var(--pg-border-hairline) solid var(--pg-color-neutral);
   border-radius: var(--pg-radius-sm);
 }
 

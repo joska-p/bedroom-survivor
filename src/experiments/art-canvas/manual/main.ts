@@ -1,4 +1,3 @@
-import "./styles.css";
 import { createSlider } from "../../../ui/controls";
 import { initArtPage, required } from "../page";
 import { manual } from "./shader/manual";

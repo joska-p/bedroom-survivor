@@ -19,10 +19,10 @@
         </div>
 
         <div class="pg-palette__base pg-card">
-          <span class="pg-palette__base-label">Couleur de base</span>
+          <span class="pg-palette__base-label pg-hint">Couleur de base</span>
           <span class="pg-badge pg-palette__color-value" data-base-value>oklch(0.7 0.1 196)</span>
           <div
-            class="pg-palette__swatch pg-palette__swatch--base"
+            class="pg-palette__swatch pg-palette__swatch--base pg-color-swatch"
             data-base-swatch
             role="img"
             aria-label="Couleur de base"
@@ -32,62 +32,66 @@
         <div class="pg-palette__result" data-palettes aria-live="polite">
           <p class="pg-loading" data-loading hidden>Génération de la palette…</p>
 
-          <div class="pg-swatches pg-palette__swatches" data-swatches hidden>
+          <div
+            class="pg-swatches pg-palette__swatches pg-auto-grid pg-auto-grid--collapse"
+            data-swatches
+            hidden
+          >
             <div class="pg-card pg-palette__color" data-color-card>
-              <span class="pg-palette__color-label" data-color-label>Couleur 1</span>
+              <span class="pg-palette__color-label pg-hint" data-color-label>Couleur 1</span>
               <span class="pg-badge pg-palette__color-value" data-color-value></span>
               <div
-                class="pg-palette__swatch"
+                class="pg-palette__swatch pg-color-swatch"
                 data-color-swatch
                 role="img"
                 aria-label="Couleur 1"
               ></div>
             </div>
             <div class="pg-card pg-palette__color" data-color-card>
-              <span class="pg-palette__color-label" data-color-label>Couleur 2</span>
+              <span class="pg-palette__color-label pg-hint" data-color-label>Couleur 2</span>
               <span class="pg-badge pg-palette__color-value" data-color-value></span>
               <div
-                class="pg-palette__swatch"
+                class="pg-palette__swatch pg-color-swatch"
                 data-color-swatch
                 role="img"
                 aria-label="Couleur 2"
               ></div>
             </div>
             <div class="pg-card pg-palette__color" data-color-card>
-              <span class="pg-palette__color-label" data-color-label>Couleur 3</span>
+              <span class="pg-palette__color-label pg-hint" data-color-label>Couleur 3</span>
               <span class="pg-badge pg-palette__color-value" data-color-value></span>
               <div
-                class="pg-palette__swatch"
+                class="pg-palette__swatch pg-color-swatch"
                 data-color-swatch
                 role="img"
                 aria-label="Couleur 3"
               ></div>
             </div>
             <div class="pg-card pg-palette__color" data-color-card>
-              <span class="pg-palette__color-label" data-color-label>Couleur 4</span>
+              <span class="pg-palette__color-label pg-hint" data-color-label>Couleur 4</span>
               <span class="pg-badge pg-palette__color-value" data-color-value></span>
               <div
-                class="pg-palette__swatch"
+                class="pg-palette__swatch pg-color-swatch"
                 data-color-swatch
                 role="img"
                 aria-label="Couleur 4"
               ></div>
             </div>
             <div class="pg-card pg-palette__color" data-color-card>
-              <span class="pg-palette__color-label" data-color-label>Couleur 5</span>
+              <span class="pg-palette__color-label pg-hint" data-color-label>Couleur 5</span>
               <span class="pg-badge pg-palette__color-value" data-color-value></span>
               <div
-                class="pg-palette__swatch"
+                class="pg-palette__swatch pg-color-swatch"
                 data-color-swatch
                 role="img"
                 aria-label="Couleur 5"
               ></div>
             </div>
             <div class="pg-card pg-palette__color" data-color-card>
-              <span class="pg-palette__color-label" data-color-label>Couleur 6</span>
+              <span class="pg-palette__color-label pg-hint" data-color-label>Couleur 6</span>
               <span class="pg-badge pg-palette__color-value" data-color-value></span>
               <div
-                class="pg-palette__swatch"
+                class="pg-palette__swatch pg-color-swatch"
                 data-color-swatch
                 role="img"
                 aria-label="Couleur 6"
@@ -101,7 +105,9 @@
           <p class="pg-error" data-error role="alert" hidden></p>
         </div>
 
-        <p class="pg-palette__status pg-status" data-status aria-live="polite">Prêt.</p>
+        <p class="pg-palette__status pg-status pg-status--spaced" data-status aria-live="polite">
+          Prêt.
+        </p>
       </section>
 
       <aside class="pg-shell__panel" aria-label="Contrôles">

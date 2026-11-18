@@ -60,6 +60,7 @@ function createColorInput(mount: HTMLElement, value: string): HTMLInputElement {
   const input = document.createElement("input");
 
   input.type = "color";
+  input.classList.add("pg-color-input");
   input.value = value;
   mount.append(input);
 

@@ -9,7 +9,7 @@
   </head>
   <body>
     <pg-shell class="pg-shell">
-      <section class="pg-shell__stage pg-mosaic-stage" aria-label="Mosaic Maker">
+      <section class="pg-shell__stage pg-stage" aria-label="Mosaic Maker">
         <div class="pg-intro">
           <h1>Mosaic Maker</h1>
           <p class="pg-lead">
@@ -27,7 +27,7 @@
         <div class="pg-shell__content">
           <h2>Contrôles</h2>
 
-          <h3>Formes de tuiles</h3>
+          <h3 class="pg-panel-title">Formes de tuiles</h3>
           <div class="pg-mosaic__tile-set" data-tile-set role="group" aria-label="Formes de tuiles">
             <button
               type="button"
@@ -103,15 +103,15 @@
             </button>
           </div>
 
-          <h3>Actions</h3>
-          <div class="pg-mosaic__actions">
+          <h3 class="pg-panel-title">Actions</h3>
+          <div class="pg-mosaic__actions pg-grid--2">
             <button type="button" data-shuffle-colors>Mélanger les couleurs</button>
             <button type="button" data-shuffle-rotations>Mélanger les rotations</button>
             <button type="button" data-cycle-palettes>Palette suivante</button>
             <button type="button" data-regenerate>Régénérer</button>
           </div>
 
-          <h3>Disposition</h3>
+          <h3 class="pg-panel-title">Disposition</h3>
           <label class="pg-control">
             <span>Taille des tuiles</span>
             <span data-control="tile-size"></span>
@@ -123,9 +123,9 @@
             <output data-value="gap">0 px</output>
           </label>
 
-          <h3>Palettes</h3>
+          <h3 class="pg-panel-title">Palettes</h3>
           <div
-            class="pg-mosaic__palettes"
+            class="pg-mosaic__palettes pg-actions"
             data-palettes
             role="radiogroup"
             aria-label="Palettes de couleurs"

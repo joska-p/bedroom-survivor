@@ -9,7 +9,7 @@
   </head>
   <body>
     <pg-shell class="pg-shell">
-      <section class="pg-shell__stage pg-radu__stage" aria-label="Radu Machine Learning">
+      <section class="pg-shell__stage pg-stage" aria-label="Radu Machine Learning">
         <div class="pg-intro">
           <h1>Radu Machine Learning</h1>
           <p class="pg-lead">
@@ -34,7 +34,13 @@
             <div class="pg-radu__actions">
               <label class="pg-control pg-radu__color">
                 <span>Color</span>
-                <input type="color" value="#ffffff" data-stroke-color aria-label="Stroke color" />
+                <input
+                  type="color"
+                  class="pg-color-input pg-color-input--bare"
+                  value="#ffffff"
+                  data-stroke-color
+                  aria-label="Stroke color"
+                />
               </label>
               <button type="button" data-undo>Undo</button>
               <button type="button" data-clear>Clear</button>

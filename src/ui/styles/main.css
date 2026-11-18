@@ -7,9 +7,10 @@
 @import "./reset.css";
 @import "./controls.css";
 @import "./shell.css";
+@import "./light-pages.css";
 
 body {
-  height: 100dvh;
+  height: var(--pg-shell-min-height);
   background-repeat: no-repeat;
   background-position: center;
   background-image:

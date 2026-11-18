@@ -1,28 +1,42 @@
-/* Home index: grouped navigation for the growing list of experiments. */
+/*
+ * Light index pages: home and Art Canvas summary share one page family.
+ * Only their content differs; layout, cards and motion stay in this file.
+ */
 
-.pg-home {
-  /* No shared token defines a light-page content width; keep 72rem until D21. */
-  max-width: 72rem;
-  height: 100%;
-  overflow-y: auto;
+.pg-index {
+  max-width: var(--pg-layout-page-max-width);
   margin: 0 auto;
   padding: var(--pg-space-8) var(--pg-space-6);
 }
 
-.pg-home__header {
+.pg-index--scroll {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.pg-index__header {
   margin-bottom: var(--pg-space-6);
 }
 
-.pg-home__header .pg-lead {
+.pg-index__header .pg-lead {
   color: var(--pg-text-muted);
   font-size: var(--pg-font-size-lg);
 }
 
-.pg-home__header .pg-button {
-  padding: 0 var(--pg-space-3);
+.pg-index__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pg-space-3);
 }
 
-.pg-home__nav h2 {
+.pg-index .pg-button {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.pg-index__nav h2 {
   display: flex;
   align-items: center;
   gap: var(--pg-space-2);
@@ -32,19 +46,19 @@
   font-weight: var(--pg-font-weight-semibold);
 }
 
-.pg-home__description {
+.pg-index__description {
   margin: 0 0 var(--pg-space-4);
   color: var(--pg-text-muted);
   font-size: var(--pg-font-size-sm);
 }
 
-.pg-home__cards {
+.pg-index__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--pg-layout-card-min-width), 1fr));
   gap: var(--pg-space-3);
 }
 
-.pg-home__cards a {
+.pg-index__grid a {
   color: inherit;
   text-decoration: none;
   transition:
@@ -52,28 +66,22 @@
     background-color var(--pg-motion-duration-fast) var(--pg-motion-easing-out);
 }
 
-.pg-home__cards a:hover {
+.pg-index__grid a:hover {
   border-color: var(--pg-color-aurora);
   background-color: color-mix(in oklab, var(--pg-color-aurora) 8%, transparent);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .pg-home__cards a {
-    transition: none;
-  }
-}
-
-/* Custom properties cannot be used in @media conditions; 720px mirrors --pg-breakpoint-narrow-max. */
+/* 720px mirrors --pg-breakpoint-narrow-max; custom properties are invalid in @media. */
 @media (max-width: 720px) {
-  .pg-home {
+  .pg-index {
     padding: var(--pg-space-6) var(--pg-space-4);
   }
 
-  .pg-home__cards {
+  .pg-index__grid {
     grid-template-columns: 1fr;
   }
 
-  .pg-home__cards a {
+  .pg-index__grid a {
     padding: var(--pg-space-3);
   }
 }

@@ -1,0 +1,559 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T17:38:53.929Z",
+  "title": "Design System: pg_lab",
+  "extensions": {
+    "colorMeta": {
+      "warm-paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "oklch(0.956 0.055 96.155 / 0.5)",
+        "tonalRamp": [
+          "oklch(0.15 0.0138 96.155 / 0.5)",
+          "oklch(0.27 0.0303 96.155 / 0.5)",
+          "oklch(0.39 0.0467 96.155 / 0.5)",
+          "oklch(0.51 0.055 96.155 / 0.5)",
+          "oklch(0.63 0.0467 96.155 / 0.5)",
+          "oklch(0.75 0.033 96.155 / 0.5)",
+          "oklch(0.86 0.0192 96.155 / 0.5)",
+          "oklch(0.96 0.0066 96.155 / 0.5)"
+        ]
+      },
+      "charcoal-veil": {
+        "role": "neutral",
+        "displayName": "Charcoal Veil",
+        "canonical": "oklch(0.277 0 0 / 0.5)",
+        "tonalRamp": [
+          "oklch(0.15 0 0 / 0.5)",
+          "oklch(0.27 0 0 / 0.5)",
+          "oklch(0.39 0 0 / 0.5)",
+          "oklch(0.51 0 0 / 0.5)",
+          "oklch(0.63 0 0 / 0.5)",
+          "oklch(0.75 0 0 / 0.5)",
+          "oklch(0.86 0 0 / 0.5)",
+          "oklch(0.96 0 0 / 0.5)"
+        ]
+      },
+      "lab-ink": {
+        "role": "neutral",
+        "displayName": "Lab Ink",
+        "canonical": "oklch(0.277 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.86 0 0)",
+          "oklch(0.96 0 0)"
+        ]
+      },
+      "paper-ink": {
+        "role": "neutral",
+        "displayName": "Paper Ink",
+        "canonical": "oklch(0.956 0.055 96.155)",
+        "tonalRamp": [
+          "oklch(0.15 0.0138 96.155)",
+          "oklch(0.27 0.0303 96.155)",
+          "oklch(0.39 0.0467 96.155)",
+          "oklch(0.51 0.055 96.155)",
+          "oklch(0.63 0.0467 96.155)",
+          "oklch(0.75 0.033 96.155)",
+          "oklch(0.86 0.0192 96.155)",
+          "oklch(0.96 0.0066 96.155)"
+        ]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "oklch(0.482 0.018 61.042)",
+        "tonalRamp": [
+          "oklch(0.15 0.0045 61.042)",
+          "oklch(0.27 0.0099 61.042)",
+          "oklch(0.39 0.0153 61.042)",
+          "oklch(0.51 0.018 61.042)",
+          "oklch(0.63 0.0153 61.042)",
+          "oklch(0.75 0.0108 61.042)",
+          "oklch(0.86 0.0063 61.042)",
+          "oklch(0.96 0.0022 61.042)"
+        ]
+      },
+      "muted-chalk": {
+        "role": "neutral",
+        "displayName": "Muted Chalk",
+        "canonical": "oklch(0.69 0.035 76.307)",
+        "tonalRamp": [
+          "oklch(0.15 0.0088 76.307)",
+          "oklch(0.27 0.0193 76.307)",
+          "oklch(0.39 0.0298 76.307)",
+          "oklch(0.51 0.035 76.307)",
+          "oklch(0.63 0.0298 76.307)",
+          "oklch(0.75 0.021 76.307)",
+          "oklch(0.86 0.0123 76.307)",
+          "oklch(0.96 0.0042 76.307)"
+        ]
+      },
+      "hairline-warm": {
+        "role": "neutral",
+        "displayName": "Hairline Warm",
+        "canonical": "oklch(0.825 0.051 85.116)",
+        "tonalRamp": [
+          "oklch(0.15 0.0127 85.116)",
+          "oklch(0.27 0.0281 85.116)",
+          "oklch(0.39 0.0433 85.116)",
+          "oklch(0.51 0.051 85.116)",
+          "oklch(0.63 0.0433 85.116)",
+          "oklch(0.75 0.0306 85.116)",
+          "oklch(0.86 0.0178 85.116)",
+          "oklch(0.96 0.0061 85.116)"
+        ]
+      },
+      "hairline-cool": {
+        "role": "neutral",
+        "displayName": "Hairline Cool",
+        "canonical": "oklch(0.411 0.012 51.866)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 51.866)",
+          "oklch(0.27 0.0066 51.866)",
+          "oklch(0.39 0.0102 51.866)",
+          "oklch(0.51 0.012 51.866)",
+          "oklch(0.63 0.0102 51.866)",
+          "oklch(0.75 0.0072 51.866)",
+          "oklch(0.86 0.0042 51.866)",
+          "oklch(0.96 0.0014 51.866)"
+        ]
+      },
+      "teal-signal": {
+        "role": "primary",
+        "displayName": "Teal Signal",
+        "canonical": "oklch(0.693 0.042 169.768)",
+        "tonalRamp": [
+          "oklch(0.15 0.0105 169.768)",
+          "oklch(0.27 0.0231 169.768)",
+          "oklch(0.39 0.0357 169.768)",
+          "oklch(0.51 0.042 169.768)",
+          "oklch(0.63 0.0357 169.768)",
+          "oklch(0.75 0.0252 169.768)",
+          "oklch(0.86 0.0147 169.768)",
+          "oklch(0.96 0.005 169.768)"
+        ]
+      },
+      "dusk-blue": {
+        "role": "primary",
+        "displayName": "Dusk Blue",
+        "canonical": "oklch(0.471 0.082 215.806)",
+        "tonalRamp": [
+          "oklch(0.15 0.0205 215.806)",
+          "oklch(0.27 0.0451 215.806)",
+          "oklch(0.39 0.0697 215.806)",
+          "oklch(0.51 0.082 215.806)",
+          "oklch(0.63 0.0697 215.806)",
+          "oklch(0.75 0.0492 215.806)",
+          "oklch(0.86 0.0287 215.806)",
+          "oklch(0.96 0.0098 215.806)"
+        ]
+      },
+      "solder-green": {
+        "role": "secondary",
+        "displayName": "Solder Green",
+        "canonical": "oklch(0.765 0.158 110.835)",
+        "tonalRamp": [
+          "oklch(0.15 0.0395 110.835)",
+          "oklch(0.27 0.0869 110.835)",
+          "oklch(0.39 0.1343 110.835)",
+          "oklch(0.51 0.158 110.835)",
+          "oklch(0.63 0.1343 110.835)",
+          "oklch(0.75 0.0948 110.835)",
+          "oklch(0.86 0.0553 110.835)",
+          "oklch(0.96 0.019 110.835)"
+        ]
+      },
+      "solder-deep": {
+        "role": "secondary",
+        "displayName": "Solder Deep",
+        "canonical": "oklch(0.546 0.112 106.464)",
+        "tonalRamp": [
+          "oklch(0.15 0.028 106.464)",
+          "oklch(0.27 0.0616 106.464)",
+          "oklch(0.39 0.0952 106.464)",
+          "oklch(0.51 0.112 106.464)",
+          "oklch(0.63 0.0952 106.464)",
+          "oklch(0.75 0.0672 106.464)",
+          "oklch(0.86 0.0392 106.464)",
+          "oklch(0.96 0.0134 106.464)"
+        ]
+      },
+      "beacon-amber": {
+        "role": "secondary",
+        "displayName": "Beacon Amber",
+        "canonical": "oklch(0.832 0.159 82.987)",
+        "tonalRamp": [
+          "oklch(0.15 0.0398 82.987)",
+          "oklch(0.27 0.0875 82.987)",
+          "oklch(0.39 0.1351 82.987)",
+          "oklch(0.51 0.159 82.987)",
+          "oklch(0.63 0.1351 82.987)",
+          "oklch(0.75 0.0954 82.987)",
+          "oklch(0.86 0.0556 82.987)",
+          "oklch(0.96 0.0191 82.987)"
+        ]
+      },
+      "beacon-deep": {
+        "role": "secondary",
+        "displayName": "Beacon Deep",
+        "canonical": "oklch(0.618 0.128 70.674)",
+        "tonalRamp": [
+          "oklch(0.15 0.032 70.674)",
+          "oklch(0.27 0.0704 70.674)",
+          "oklch(0.39 0.1088 70.674)",
+          "oklch(0.51 0.128 70.674)",
+          "oklch(0.63 0.1088 70.674)",
+          "oklch(0.75 0.0768 70.674)",
+          "oklch(0.86 0.0448 70.674)",
+          "oklch(0.96 0.0154 70.674)"
+        ]
+      },
+      "ember-red": {
+        "role": "tertiary",
+        "displayName": "Ember Red",
+        "canonical": "oklch(0.66 0.218 30.392)",
+        "tonalRamp": [
+          "oklch(0.15 0.0545 30.392)",
+          "oklch(0.27 0.1199 30.392)",
+          "oklch(0.39 0.1853 30.392)",
+          "oklch(0.51 0.218 30.392)",
+          "oklch(0.63 0.1853 30.392)",
+          "oklch(0.75 0.1308 30.392)",
+          "oklch(0.86 0.0763 30.392)",
+          "oklch(0.96 0.0262 30.392)"
+        ]
+      },
+      "ember-deep": {
+        "role": "tertiary",
+        "displayName": "Ember Deep",
+        "canonical": "oklch(0.437 0.179 28.26)",
+        "tonalRamp": [
+          "oklch(0.15 0.0447 28.26)",
+          "oklch(0.27 0.0985 28.26)",
+          "oklch(0.39 0.1521 28.26)",
+          "oklch(0.51 0.179 28.26)",
+          "oklch(0.63 0.1521 28.26)",
+          "oklch(0.75 0.1074 28.26)",
+          "oklch(0.86 0.0626 28.26)",
+          "oklch(0.96 0.0215 28.26)"
+        ]
+      },
+      "spectral-purple": {
+        "role": "tertiary",
+        "displayName": "Spectral Purple",
+        "canonical": "oklch(0.705 0.098 2.189)",
+        "tonalRamp": [
+          "oklch(0.15 0.0245 2.189)",
+          "oklch(0.27 0.0539 2.189)",
+          "oklch(0.39 0.0833 2.189)",
+          "oklch(0.51 0.098 2.189)",
+          "oklch(0.63 0.0833 2.189)",
+          "oklch(0.75 0.0588 2.189)",
+          "oklch(0.86 0.0343 2.189)",
+          "oklch(0.96 0.0118 2.189)"
+        ]
+      },
+      "spectral-purple-deep": {
+        "role": "tertiary",
+        "displayName": "Spectral Purple Deep",
+        "canonical": "oklch(0.489 0.124 344.276)",
+        "tonalRamp": [
+          "oklch(0.15 0.031 344.276)",
+          "oklch(0.27 0.0682 344.276)",
+          "oklch(0.39 0.1054 344.276)",
+          "oklch(0.51 0.124 344.276)",
+          "oklch(0.63 0.1054 344.276)",
+          "oklch(0.75 0.0744 344.276)",
+          "oklch(0.86 0.0434 344.276)",
+          "oklch(0.96 0.0149 344.276)"
+        ]
+      },
+      "circuit-aqua": {
+        "role": "tertiary",
+        "displayName": "Circuit Aqua",
+        "canonical": "oklch(0.756 0.108 137.676)",
+        "tonalRamp": [
+          "oklch(0.15 0.027 137.676)",
+          "oklch(0.27 0.0594 137.676)",
+          "oklch(0.39 0.0918 137.676)",
+          "oklch(0.51 0.108 137.676)",
+          "oklch(0.63 0.0918 137.676)",
+          "oklch(0.75 0.0648 137.676)",
+          "oklch(0.86 0.0378 137.676)",
+          "oklch(0.96 0.013 137.676)"
+        ]
+      },
+      "circuit-aqua-deep": {
+        "role": "tertiary",
+        "displayName": "Circuit Aqua Deep",
+        "canonical": "oklch(0.534 0.082 155.401)",
+        "tonalRamp": [
+          "oklch(0.15 0.0205 155.401)",
+          "oklch(0.27 0.0451 155.401)",
+          "oklch(0.39 0.0697 155.401)",
+          "oklch(0.51 0.082 155.401)",
+          "oklch(0.63 0.0697 155.401)",
+          "oklch(0.75 0.0492 155.401)",
+          "oklch(0.86 0.0287 155.401)",
+          "oklch(0.96 0.0098 155.401)"
+        ]
+      },
+      "copper-orange": {
+        "role": "tertiary",
+        "displayName": "Copper Orange",
+        "canonical": "oklch(0.731 0.182 51.693)",
+        "tonalRamp": [
+          "oklch(0.15 0.0455 51.693)",
+          "oklch(0.27 0.1001 51.693)",
+          "oklch(0.39 0.1547 51.693)",
+          "oklch(0.51 0.182 51.693)",
+          "oklch(0.63 0.1547 51.693)",
+          "oklch(0.75 0.1092 51.693)",
+          "oklch(0.86 0.0637 51.693)",
+          "oklch(0.96 0.0218 51.693)"
+        ]
+      },
+      "copper-orange-deep": {
+        "role": "tertiary",
+        "displayName": "Copper Orange Deep",
+        "canonical": "oklch(0.513 0.162 39.297)",
+        "tonalRamp": [
+          "oklch(0.15 0.0405 39.297)",
+          "oklch(0.27 0.0891 39.297)",
+          "oklch(0.39 0.1377 39.297)",
+          "oklch(0.51 0.162 39.297)",
+          "oklch(0.63 0.1377 39.297)",
+          "oklch(0.75 0.0972 39.297)",
+          "oklch(0.86 0.0567 39.297)",
+          "oklch(0.96 0.0194 39.297)"
+        ]
+      },
+      "canvas-well": {
+        "role": "neutral",
+        "displayName": "Canvas Well",
+        "canonical": "oklch(0.241 0.005 219.672)",
+        "tonalRamp": [
+          "oklch(0.15 0.0013 219.672)",
+          "oklch(0.27 0.0028 219.672)",
+          "oklch(0.39 0.0043 219.672)",
+          "oklch(0.51 0.005 219.672)",
+          "oklch(0.63 0.0043 219.672)",
+          "oklch(0.75 0.003 219.672)",
+          "oklch(0.86 0.0017 219.672)",
+          "oklch(0.96 0.0006 219.672)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single experiment h1 in each page intro."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Accent-colored index section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Panel and section group labels."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default prose and native control text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Badges, readouts and compact metadata in mono."
+      }
+    },
+    "shadows": [
+      {
+        "name": "focus-halo",
+        "value": "0 0 0 3px var(--pg-color-neutral)",
+        "purpose": "Local focus/selection ring in mosaic-maker; no ambient shadow exists at rest."
+      }
+    ],
+    "motion": [
+      {
+        "name": "duration-fast",
+        "value": "120ms",
+        "purpose": "Hover and border transitions."
+      },
+      {
+        "name": "duration-normal",
+        "value": "200ms",
+        "purpose": "Panel handle and spinner timing."
+      },
+      {
+        "name": "duration-slow",
+        "value": "320ms",
+        "purpose": "Longer state transitions."
+      },
+      {
+        "name": "easing-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for state changes."
+      },
+      {
+        "name": "easing-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Resize handle opacity transitions."
+      },
+      {
+        "name": "easing-linear",
+        "value": "linear",
+        "purpose": "Continuous spinner rotation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow-max",
+        "value": "720px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Shared Button",
+      "kind": "button",
+      "refersTo": "button-shared",
+      "description": "Transparent hairline button used in panels and on light pages.",
+      "html": "<button type=\"button\" class=\"ds-btn\">Générer</button>",
+      "css": ".ds-btn { min-height: 44px; padding: 0 12px; border: 1px solid currentColor; border-radius: 4px; background-color: transparent; color: inherit; cursor: pointer; font: inherit; transition: background-color 120ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:hover { background-color: var(--pg-color-neutral); } .ds-btn:focus-visible { outline: 2px solid var(--pg-color-aurora); outline-offset: 2px; } .ds-btn:active { background-color: var(--pg-dark0Soft); } .ds-btn:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat, translucent container over the radial aurora wash.",
+      "html": "<div class=\"ds-card\"><strong>Palette</strong><span>Six couleurs générées</span></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1px solid var(--pg-color-neutral); border-radius: 6px; background-color: var(--pg-surface-background); color: var(--pg-surface-foreground); }"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Small monospaced label for tiers and values.",
+      "html": "<span class=\"ds-badge\">Tier A</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border: 1px solid currentColor; border-radius: 9999px; font-family: var(--pg-font-mono); font-size: 0.75rem; line-height: 1.5; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-select",
+      "description": "Native text field styled with the shared surface and hairline border.",
+      "html": "<input class=\"ds-input\" type=\"text\" value=\"oklch(0.7 0.1 196)\" aria-label=\"Valeur OKLCH\" />",
+      "css": ".ds-input { padding: 8px 12px; border: 1px solid currentColor; border-radius: 4px; background-color: var(--pg-surface-background); color: inherit; font: inherit; } .ds-input:hover { border-color: var(--pg-color-aurora); } .ds-input:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; } .ds-input:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Status Pills",
+      "kind": "custom",
+      "refersTo": "status-ok",
+      "description": "Compact mono status indicators for ok, error and pending states.",
+      "html": "<span class=\"ds-status ds-status--ok\">Prêt</span> <span class=\"ds-status ds-status--error\">Erreur</span> <span class=\"ds-status ds-status--pending\">En cours</span>",
+      "css": ".ds-status { display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 9999px; font-family: var(--pg-font-mono); font-size: 0.75rem; line-height: 1.5; } .ds-status--ok { border: 1px solid var(--pg-color-solder); background-color: color-mix(in oklab, var(--pg-color-solder) 12%, transparent); color: var(--pg-color-solder); } .ds-status--error { border: 1px solid var(--pg-color-error); background-color: color-mix(in oklab, var(--pg-color-error) 12%, transparent); color: var(--pg-color-error); } .ds-status--pending { border: 1px solid var(--pg-color-amber); background-color: color-mix(in oklab, var(--pg-color-amber) 12%, transparent); color: var(--pg-color-amber); }"
+    },
+    {
+      "name": "Canvas Viewport",
+      "kind": "custom",
+      "refersTo": "canvas-viewport",
+      "description": "Dark well that hosts a 2D or WebGL2 canvas.",
+      "html": "<div class=\"ds-canvas-viewport\"><canvas class=\"ds-canvas\" aria-label=\"Rendu génératif\"></canvas></div>",
+      "css": ".ds-canvas-viewport { position: relative; display: flex; flex: 1; min-height: 280px; overflow: hidden; border: 1px solid var(--pg-color-neutral); border-radius: 6px; background-color: var(--pg-dark0Hard); } .ds-canvas { display: block; flex: 1; width: 100%; height: 100%; min-height: 280px; touch-action: none; } .ds-canvas-viewport:focus-within { outline: 2px solid var(--pg-color-aurora); outline-offset: 2px; }"
+    },
+    {
+      "name": "Navigation Card Link",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Index link that turns its card border aurora on hover.",
+      "html": "<a class=\"ds-nav-card\" href=\"./palette/\"><strong>Palette</strong><span>Harmonies OKLCH</span></a>",
+      "css": ".ds-nav-card { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid var(--pg-color-neutral); border-radius: 6px; background-color: var(--pg-surface-background); color: inherit; text-decoration: none; transition: border-color 120ms cubic-bezier(0.16, 1, 0.3, 1), background-color 120ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav-card:hover { border-color: var(--pg-color-aurora); background-color: color-mix(in oklab, var(--pg-color-aurora) 8%, transparent); } .ds-nav-card:focus-visible { outline: 2px solid var(--pg-color-aurora); outline-offset: 2px; } @media (prefers-reduced-motion: reduce) { .ds-nav-card { transition: none; } }"
+    },
+    {
+      "name": "Loading Indicator",
+      "kind": "custom",
+      "refersTo": "button-shared",
+      "description": "Aurora spinner with reduced-motion support.",
+      "html": "<p class=\"ds-loading\">Génération de la palette…</p>",
+      "css": ".ds-loading { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid currentColor; border-radius: 9999px; color: var(--pg-color-aurora); font-family: var(--pg-font-mono); font-size: 0.875rem; } .ds-loading::before { content: \"\"; width: 12px; height: 12px; border: 2px solid currentColor; border-top-color: transparent; border-radius: 9999px; animation: ds-spin 200ms linear infinite; } @keyframes ds-spin { to { transform: rotate(360deg); } } @media (prefers-reduced-motion: reduce) { .ds-loading::before { animation: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Spectral Notebook",
+    "overview": "pg_lab looks like a working notebook left open on an instrument bench: warm paper grounds, charcoal ink, hairline rules, and a small set of OKLCH signal colors that behave like labels on dials. The canvas is the loudest thing on screen; the interface around it stays precise, playful, and deliberately unspectacular. The voice is instrumented — readouts, status lines and short labels — rather than marketing copy. The rejected reference is the generic SaaS dashboard: no metric grids, no product-marketing chrome, no invented brand mythology.\n\nDensity is low to moderate. An experiment is a stage plus a 320px control panel; an index is a short list of quietly bordered cards. Everything is native HTML in light DOM: no framework, no shadow DOM, no component runtime. Motion is short (120–320ms) and only ever clarifies state.\n\nDepth is layered, not lifted. Translucent surfaces sit over a five-radial aurora wash and are separated by 1px hairlines. The chosen direction of soft, layered cards is expressed through this translucent stacking, modest radii and tonal separation; the incumbent system has no ambient drop-shadow token, and none should be invented to fake softness.",
+    "keyCharacteristics": [
+      "Native controls, not design-system imitations.",
+      "OKLCH as the only color language, with bright and faded pairs per theme.",
+      "Stage-first hierarchy: the generated image dominates, the panel recedes.",
+      "Hairline borders and 4–6px radii; surfaces are flat at rest.",
+      "French interface copy, English code, docs and identifiers."
+    ],
+    "rules": [
+      {
+        "name": "The Border-Only Neutral Rule",
+        "body": "`--pg-color-neutral` never carries text. Secondary text always uses `--pg-text-muted`, the AA-verified token.",
+        "section": "colors"
+      },
+      {
+        "name": "The Theme-Pair Rule",
+        "body": "Every semantic color has a bright light value and a faded dark value. Never reuse a bright value under `[data-theme=\"dark\"]`.",
+        "section": "colors"
+      },
+      {
+        "name": "The Accent-as-Signal Rule",
+        "body": "Teal Signal / Dusk Blue marks navigation, focus and state. It never becomes a large surface fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono-for-Numbers Rule",
+        "body": "Values, statuses, badges, stats and code are mono. Prose and interactive controls stay sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The Stage-First Rule",
+        "body": "The stage takes all remaining space. The panel is a fixed 320px default and never grows into the stage.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Cards and panels are flat at rest. Softness comes from translucent layering and modest radii, not from drop shadows.",
+        "section": "elevation-depth"
+      },
+      {
+        "name": "The Halo-Only Shadow Rule",
+        "body": "A shadow may only be a focus or selection ring. If a new surface needs separation, use a hairline or a surface tint first.",
+        "section": "elevation-depth"
+      },
+      {
+        "name": "The Quiet-Corner Rule",
+        "body": "Default to 4px on controls and 6px on containers. Reserve 8px for experiment-local panels and 9999px for pills and circular controls.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** use `--pg-*` tokens in experiment stylesheets; palette data colors such as swatches are the only exception.",
+      "**Do** keep the 44px touch target on buttons and the 2px aurora focus outline on interactive elements.",
+      "**Do** use `--pg-text-muted` for secondary text, verified at 5.75:1 light and 5.30:1 dark.",
+      "**Do** keep interface copy in French and code, docs and identifiers in English.",
+      "**Do** build tints with `color-mix(in oklab, ...)` so they follow the active theme."
+    ],
+    "donts": [
+      "**Don't** hard-code hex or rgb colors, spacing or sizes in experiment `styles.css`.",
+      "**Don't** use `--pg-color-neutral` for text; it is a border token.",
+      "**Don't** add ambient drop shadows or backdrop blur; layered translucency and hairlines provide depth.",
+      "**Don't** introduce a framework, shadow DOM or component runtime into an experiment page.",
+      "**Don't** import webfonts; the system sans and system mono stacks are the specified pairing.",
+      "**Don't** use custom properties inside `@media` conditions; mirror 720px and 1024px numerically."
+    ]
+  }
+}

@@ -9,7 +9,7 @@
   </head>
   <body>
     <pg-shell class="pg-shell">
-      <section class="pg-shell__stage pg-fracture__stage" aria-label="Fracture">
+      <section class="pg-shell__stage pg-stage" aria-label="Fracture">
         <div class="pg-intro">
           <h1>Fracture</h1>
           <p class="pg-lead">
@@ -37,7 +37,7 @@
           </label>
 
           <section class="pg-fracture__section">
-            <h3>View</h3>
+            <h3 class="pg-panel-title">View</h3>
             <dl class="pg-fracture__readouts">
               <div>
                 <dt>centerRe</dt>
@@ -59,17 +59,17 @@
           </section>
 
           <section class="pg-fracture__section">
-            <h3>Presets</h3>
-            <div class="pg-fracture__buttons" data-presets-curated></div>
-            <div class="pg-fracture__buttons" data-presets-captured></div>
-            <div class="pg-fracture__buttons">
+            <h3 class="pg-panel-title">Presets</h3>
+            <div class="pg-fracture__buttons pg-actions" data-presets-curated></div>
+            <div class="pg-fracture__buttons pg-actions" data-presets-captured></div>
+            <div class="pg-fracture__buttons pg-actions">
               <button type="button" data-capture-view>Capture current view</button>
               <button type="button" data-reset-view>Reset view</button>
             </div>
           </section>
 
           <section class="pg-fracture__section" data-julia-section hidden>
-            <h3>Julia constant</h3>
+            <h3 class="pg-panel-title">Julia constant</h3>
             <label class="pg-control">
               <span>c · real</span>
               <span data-control="julia-re"></span>
@@ -81,7 +81,7 @@
           </section>
 
           <section class="pg-fracture__section">
-            <h3>Iterations</h3>
+            <h3 class="pg-panel-title">Iterations</h3>
             <label class="pg-control">
               <span>Baseline</span>
               <span data-control="iterationBase"></span>
@@ -98,7 +98,7 @@
           </section>
 
           <section class="pg-fracture__section">
-            <h3>Lighting</h3>
+            <h3 class="pg-panel-title">Lighting</h3>
             <label class="pg-control">
               <span>Pixel epsilon</span>
               <span data-control="pixelEps"></span>
@@ -122,7 +122,7 @@
           </section>
 
           <section class="pg-fracture__section">
-            <h3>Color</h3>
+            <h3 class="pg-panel-title">Color</h3>
             <label class="pg-control">
               <span>Hue shift</span>
               <span data-control="hueShift"></span>

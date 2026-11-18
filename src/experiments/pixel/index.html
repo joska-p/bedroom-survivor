@@ -9,7 +9,7 @@
   </head>
   <body>
     <pg-shell class="pg-shell">
-      <section class="pg-shell__stage pg-pixel-stage" aria-label="Documentation pixel">
+      <section class="pg-shell__stage pg-stage" aria-label="Documentation pixel">
         <div class="pg-intro">
           <h1>Pixel Docs</h1>
           <p class="pg-lead">
@@ -53,7 +53,7 @@
 
             <article class="pg-pixel__card">
               <h3>pixel (recommended)</h3>
-              <pre><code>import { pixel } from 'pixel';
+              <pre class="pg-code"><code>import { pixel } from 'pixel';
 
 const result = await pixel.run({
   sourceImageData: source,
@@ -70,14 +70,14 @@ result.at(-1);   // final result</code></pre>
 
             <article class="pg-pixel__card">
               <h3>Browse available manipulations</h3>
-              <pre><code>pixel.manipulations;
+              <pre class="pg-code"><code>pixel.manipulations;
 pixel.getManipulationsByAccess('pixel');
 pixel.getManipulationsByAccess('neighborhood');</code></pre>
             </article>
 
             <article class="pg-pixel__card">
               <h3>Teardown</h3>
-              <pre><code>onPageHide(() =&gt; pixel.teardown());</code></pre>
+              <pre class="pg-code"><code>onPageHide(() =&gt; pixel.teardown());</code></pre>
             </article>
 
             <article class="pg-pixel__card">
@@ -92,7 +92,7 @@ pixel.getManipulationsByAccess('neighborhood');</code></pre>
 
           <section class="pg-pixel__doc" data-view="manip" hidden>
             <p class="pg-pixel__badges">
-              <span class="pg-pixel__badge" data-manip-badge></span>
+              <span class="pg-badge" data-manip-badge></span>
               <code data-manip-path></code>
             </p>
             <h2 data-manip-title></h2>
@@ -121,7 +121,7 @@ pixel.getManipulationsByAccess('neighborhood');</code></pre>
             <article class="pg-pixel__card">
               <h3>Try It Out</h3>
               <div class="pg-pixel__sliders" data-manip-controls></div>
-              <div class="pg-pixel__result">
+              <div class="pg-pixel__result pg-row pg-row--lg">
                 <img data-manip-result alt="Manipulation result" />
                 <span data-manip-dimensions></span>
               </div>
@@ -129,13 +129,13 @@ pixel.getManipulationsByAccess('neighborhood');</code></pre>
 
             <article class="pg-pixel__card">
               <h3>Code Sample</h3>
-              <pre><code data-manip-code></code></pre>
+              <pre class="pg-code"><code data-manip-code></code></pre>
             </article>
           </section>
 
           <section class="pg-pixel__doc" data-view="pipeline" data-pipeline="resize" hidden>
             <p class="pg-pixel__badges">
-              <span class="pg-pixel__badge pg-pixel__badge--amber">PIPELINE</span>
+              <span class="pg-badge">PIPELINE</span>
               <code>/pipeline/resize</code>
             </p>
             <h2>Resize images at any point in the pipeline</h2>
@@ -177,11 +177,11 @@ pixel.getManipulationsByAccess('neighborhood');</code></pre>
               </tbody>
             </table>
             <div class="pg-pixel__modes" data-resize-modes></div>
-            <div class="pg-pixel__result">
+            <div class="pg-pixel__result pg-row pg-row--lg">
               <img data-resize-result alt="Resized image" />
               <span data-resize-dimensions></span>
             </div>
-            <pre><code>pixel.run({
+            <pre class="pg-code"><code>pixel.run({
   sourceImageData: source,
   steps: [{ id: 'resize', options: { width: 100 } }],
 });</code></pre>
@@ -189,7 +189,7 @@ pixel.getManipulationsByAccess('neighborhood');</code></pre>
 
           <section class="pg-pixel__doc" data-view="pipeline" data-pipeline="chaining" hidden>
             <p class="pg-pixel__badges">
-              <span class="pg-pixel__badge pg-pixel__badge--amber">PIPELINE</span>
+              <span class="pg-badge">PIPELINE</span>
               <code>/pipeline/chaining</code>
             </p>
             <h2>Compose multiple manipulations into a single pipeline run</h2>
@@ -202,7 +202,7 @@ pixel.getManipulationsByAccess('neighborhood');</code></pre>
               </p>
             </article>
             <div class="pg-pixel__chain" data-chain-grid></div>
-            <pre><code>const result = await pixel.run({
+            <pre class="pg-code"><code>const result = await pixel.run({
   sourceImageData: source,
   steps: [
     { id: 'brightness', options: { value: 1.2 } },
@@ -219,7 +219,7 @@ pixel.getManipulationsByAccess('neighborhood');</code></pre>
             hidden
           >
             <h2>Execution engine</h2>
-            <pre><code>runPipeline({ source, steps, context })
+            <pre class="pg-code"><code>runPipeline({ source, steps, context })
   ├─ BufferManager(source)        // double-buffered pixels
   ├─ FusionScheduler()            // deferred pixel operations
   ├─ for each step
@@ -253,7 +253,7 @@ pixel.getManipulationsByAccess('neighborhood');</code></pre>
               Consecutive pixel manipulations are applied in a single traversal instead of
               allocating one image per step. Non-pixel operations force a flush.
             </p>
-            <pre><code>for (let i = 0; i &lt; pixelCount; i++) {
+            <pre class="pg-code"><code>for (let i = 0; i &lt; pixelCount; i++) {
   red, green, blue, alpha = current[i];
   for (const [definition, options] of batch) {
     [red, green, blue, alpha] = definition.function(red, green, blue, alpha, options);
@@ -284,7 +284,7 @@ swap();</code></pre>
           >
             <h2>Resize algorithm</h2>
             <p>Bilinear sampling maps each destination pixel back to the source:</p>
-            <pre><code>sourceX = x * (sourceWidth / targetWidth);
+            <pre class="pg-code"><code>sourceX = x * (sourceWidth / targetWidth);
 x0 = floor(sourceX);
 x1 = min(x0 + 1, sourceWidth - 1);
 top = source[y0] * (1 - fx) + source[x1] * fx;
@@ -340,7 +340,7 @@ result = top * (1 - fy) + bottom * fy;</code></pre>
             <article class="pg-pixel__card">
               <h3>Worker gateway</h3>
               <p>Main-thread pool with lazy creation and a FIFO queue.</p>
-              <pre><code>Pool: up to min(hardwareConcurrency, 4) workers
+              <pre class="pg-code"><code>Pool: up to min(hardwareConcurrency, 4) workers
 Queue: FIFO
 Dispatch: postMessage with Transferable buffers</code></pre>
             </article>

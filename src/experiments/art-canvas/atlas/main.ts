@@ -1,4 +1,3 @@
-import "./styles.css";
 import { createSlider, createTextArea } from "../../../ui/controls";
 import { initArtPage, required } from "../page";
 import { SYLLABIC_FIBONACCI_FRAGMENT } from "./shader/SyllabicFibonacciMaterial";

@@ -42,6 +42,7 @@ export default defineConfig({
   },
   fmt: {},
   lint: {
+    ignorePatterns: [".agents/**"],
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
     rules: {
       // Repo / tooling

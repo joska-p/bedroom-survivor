@@ -24,7 +24,9 @@
         </div>
 
         <p class="pg-loading pg-randomart__loading" data-loading hidden>Compilation du shader…</p>
-        <p class="pg-status pg-randomart__status" data-status aria-live="polite">Initialisation…</p>
+        <p class="pg-status pg-randomart__status pg-status--spaced" data-status aria-live="polite">
+          Initialisation…
+        </p>
       </section>
 
       <aside class="pg-shell__panel" aria-label="Contrôles">
@@ -61,11 +63,11 @@
             <h3 id="randomart-details-title">Détails du shader</h3>
             <details class="pg-card pg-randomart__details">
               <summary>Formule</summary>
-              <pre><code data-formula></code></pre>
+              <pre class="pg-code pg-code--wrap"><code data-formula></code></pre>
             </details>
             <details class="pg-card pg-randomart__details">
               <summary>Code source du shader</summary>
-              <pre><code data-shader-source></code></pre>
+              <pre class="pg-code pg-code--wrap"><code data-shader-source></code></pre>
             </details>
           </section>
 

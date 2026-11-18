@@ -9,7 +9,7 @@
   </head>
   <body>
     <pg-shell class="pg-shell">
-      <section class="pg-shell__stage pg-automa-stage" aria-label="Automa">
+      <section class="pg-shell__stage" aria-label="Automa">
         <div class="pg-intro">
           <h1>Automa</h1>
           <p class="pg-lead">
@@ -18,10 +18,8 @@
           </p>
         </div>
 
-        <div class="pg-canvas-viewport">
-          <canvas class="pg-canvas" data-canvas aria-label="Grille de l’automate"></canvas>
-          <p class="pg-canvas__error" data-error role="alert" hidden></p>
-        </div>
+        <canvas class="pg-canvas" data-canvas aria-label="Grille de l’automate"></canvas>
+        <p class="pg-canvas__error" data-error role="alert" hidden></p>
 
         <p class="pg-status pg-canvas__status" data-status aria-live="polite">Initialisation…</p>
         <p class="pg-automa__hint">
@@ -44,7 +42,7 @@
 
           <section class="pg-automa__section" aria-label="Lecture">
             <h3>Lecture</h3>
-            <div class="pg-automa__actions">
+            <div class="pg-automa__actions pg-grid--2">
               <button type="button" data-play-toggle data-playing="false">Lecture</button>
               <button type="button" data-step>Pas</button>
             </div>
@@ -57,7 +55,7 @@
 
           <section class="pg-automa__section" aria-label="Édition">
             <h3>Édition</h3>
-            <div class="pg-automa__actions">
+            <div class="pg-automa__actions pg-grid--2">
               <button type="button" data-randomize>Aléatoire</button>
               <button type="button" data-clear>Effacer</button>
               <button type="button" data-tool="draw" aria-pressed="true">Dessiner</button>

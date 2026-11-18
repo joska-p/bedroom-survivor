@@ -1,11 +1,5 @@
 /* Radu machine learning: gallery, sketchpad and chart additions only. */
 
-.pg-radu__stage {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-4);
-}
-
 .pg-radu__gallery {
   display: flex;
   flex-direction: column;
@@ -17,7 +11,7 @@
 .pg-radu__row {
   align-items: center;
   gap: var(--pg-space-2);
-  min-width: 720px;
+  min-width: var(--pg-breakpoint-narrow-max);
 }
 
 .pg-radu__student {
@@ -31,7 +25,7 @@
 
 .pg-radu__card {
   overflow: hidden;
-  border: 2px solid transparent;
+  border: var(--pg-border-width-strong) solid transparent;
   border-radius: var(--pg-radius-md);
   cursor: pointer;
 }
@@ -40,33 +34,34 @@
   border-color: var(--pg-color-neutral);
 }
 
+/* Label mapping uses semantic tokens so bright values never persist in dark theme. */
 .pg-radu__card.is-selected[data-label="car"] {
-  border-color: var(--pg-brightRed);
+  border-color: var(--pg-color-error);
 }
 
 .pg-radu__card.is-selected[data-label="fish"],
 .pg-radu__card.is-selected[data-label="house"] {
-  border-color: var(--pg-brightBlue);
+  border-color: var(--pg-color-aurora);
 }
 
 .pg-radu__card.is-selected[data-label="tree"] {
-  border-color: var(--pg-brightGreen);
+  border-color: var(--pg-color-solder);
 }
 
 .pg-radu__card.is-selected[data-label="bicycle"] {
-  border-color: var(--pg-brightYellow);
+  border-color: var(--pg-color-amber);
 }
 
 .pg-radu__card.is-selected[data-label="guitar"] {
-  border-color: var(--pg-brightPurple);
+  border-color: var(--pg-color-purple);
 }
 
 .pg-radu__card.is-selected[data-label="pencil"] {
-  border-color: var(--pg-brightAqua);
+  border-color: var(--pg-color-aqua);
 }
 
 .pg-radu__card.is-selected[data-label="clock"] {
-  border-color: var(--pg-brightOrange);
+  border-color: var(--pg-color-orange);
 }
 
 .pg-radu__image {
@@ -74,10 +69,6 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-}
-
-.pg-radu__gallery-status {
-  margin: 0;
 }
 
 .pg-radu__section {
@@ -91,10 +82,6 @@
   font-size: var(--pg-font-size-md);
 }
 
-.pg-radu__section .pg-status {
-  margin: 0;
-}
-
 .pg-radu__actions {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -105,15 +92,6 @@
 .pg-radu__actions button {
   width: 100%;
   font-size: var(--pg-font-size-xs);
-}
-
-.pg-radu__color input[type="color"] {
-  width: var(--pg-layout-color-swatch-width);
-  height: var(--pg-layout-color-swatch-height);
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
 }
 
 .pg-radu__sketch-viewport {
@@ -139,7 +117,7 @@
 }
 
 .pg-radu__axis {
-  color: var(--pg-gray244);
+  color: var(--pg-text-muted);
 }
 
 .pg-radu__dot {
@@ -153,17 +131,17 @@
 .pg-radu__dot:hover,
 .pg-radu__dot.is-selected {
   opacity: 1;
-  r: 8px;
+  r: var(--pg-space-2);
 }
 
 .pg-radu__tooltip-card {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--pg-space-1);
   padding: var(--pg-space-2);
   border-radius: var(--pg-radius-sm);
-  background: rgb(20 20 24 / 92%);
-  color: var(--pg-light0);
+  background-color: var(--pg-surface-tooltip);
+  color: var(--pg-on-tooltip);
   font-family: var(--pg-font-sans);
   font-size: var(--pg-font-size-xs);
   text-transform: capitalize;

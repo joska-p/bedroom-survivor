@@ -1,4 +1,3 @@
-import "./styles.css";
 import { createSelect, createSlider, createTextInput } from "../../../ui/controls";
 import { initArtPage, required } from "../page";
 import { generateShaderFromSeed } from "./core/assembly/from-seed";

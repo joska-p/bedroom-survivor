@@ -105,8 +105,13 @@
   --pg-radius-xl: 12px;
   --pg-radius-full: 9999px;
 
-  /* Border */
+  /* Border, focus and elevation */
   --pg-border-hairline: 1px;
+  --pg-border-width-strong: 2px;
+  --pg-focus-ring-width: 2px;
+  --pg-focus-ring-offset: 2px;
+  --pg-shadow-halo: 0 0 0 3px var(--pg-color-neutral);
+  --pg-disabled-opacity: 0.5;
 
   /* zIndex */
   --pg-z-base: 0;
@@ -156,6 +161,24 @@
   --pg-layout-text-max-width: 62ch;
   --pg-layout-canvas-viewport-min-height: 280px;
   --pg-layout-code-max-height: 14rem;
+  --pg-layout-page-max-width: 72rem;
+  --pg-layout-card-min-width: 12rem;
+  --pg-layout-doc-max-width: 52rem;
+  --pg-layout-doc-image-max-width: 8rem;
+  --pg-layout-thumb-min-width: 7rem;
+  --pg-layout-preview-max-height: 320px;
+  --pg-surface-code: color-mix(in oklab, var(--pg-color-neutral) 12%, transparent);
+  --pg-surface-tooltip: color-mix(in oklab, var(--pg-dark0Hard) 92%, transparent);
+  --pg-on-tooltip: var(--pg-light0);
+
+  /* Page-specific geometry, kept here so experiment CSS stays token-only. */
+  --pg-layout-automa-canvas-min-height: 320px;
+  --pg-layout-automa-canvas-preferred-height: 62dvh;
+  --pg-layout-automa-canvas-max-height: 860px;
+  --pg-layout-mosaic-tile-size: 64px;
+  --pg-layout-mosaic-tile-preview-size: 32px;
+  --pg-layout-spinner-lg-size: 32px;
+  --pg-layout-spinner-lg-ring-width: 4px;
 
   /* Base shell */
   --pg-shell-min-height: 100dvh;

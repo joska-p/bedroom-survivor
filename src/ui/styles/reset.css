@@ -24,15 +24,15 @@ html[data-theme="dark"] {
 }
 
 ::selection {
-  background: var(--pg-brightAqua);
-  color: var(--pg-dark0);
+  background: var(--pg-color-aqua);
+  color: var(--pg-on-color);
 }
 
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+  outline: var(--pg-focus-ring-width) solid currentColor;
+  outline-offset: var(--pg-focus-ring-offset);
 }
 
 /* Interactive elements: visible focus ring driven by the accent token. */
@@ -41,8 +41,8 @@ a:focus-visible,
 summary:focus-visible,
 [role="button"]:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--pg-color-aurora);
-  outline-offset: 2px;
+  outline: var(--pg-focus-ring-width) solid var(--pg-color-aurora);
+  outline-offset: var(--pg-focus-ring-offset);
 }
 
 body {
@@ -68,4 +68,14 @@ svg,
 video,
 canvas {
   display: block;
+}
+
+/* One global guard: experiments never re-declare reduced-motion locally. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
