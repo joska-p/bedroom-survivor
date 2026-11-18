@@ -100,17 +100,17 @@ Every technique must degrade gracefully. The experience without the enhancement 
 
 ```css
 @supports (animation-timeline: scroll()) {
-  .hero {
-    animation-timeline: scroll();
-  }
+    .hero {
+        animation-timeline: scroll();
+    }
 }
 ```
 
 ```javascript
-if ("gpu" in navigator && (await navigator.gpu.requestAdapter())) {
-  /* WebGPU */
-} else if (canvas.getContext("webgl2")) {
-  /* WebGL2 fallback */
+if ('gpu' in navigator && (await navigator.gpu.requestAdapter())) {
+    /* WebGPU */
+} else if (canvas.getContext('webgl2')) {
+    /* WebGL2 fallback */
 }
 /* CSS-only fallback must still look good */
 ```

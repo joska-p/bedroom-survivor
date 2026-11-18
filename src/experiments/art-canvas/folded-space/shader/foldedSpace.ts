@@ -1,5 +1,5 @@
-import cosinePalette from "./cosinePalette.glsl?raw";
-import repeatSpace from "./repeatSpace.glsl?raw";
+import cosinePalette from './cosinePalette.glsl?raw';
+import repeatSpace from './repeatSpace.glsl?raw';
 
 export const foldedSpaceFragment = `
   ${repeatSpace}

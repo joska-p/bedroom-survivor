@@ -81,13 +81,13 @@ When invoked from live mode, every variant declares a `color-amount` parameter. 
 
 ```json
 {
-  "id": "color-amount",
-  "kind": "range",
-  "min": 0,
-  "max": 1,
-  "step": 0.05,
-  "default": 0.5,
-  "label": "Color amount"
+    "id": "color-amount",
+    "kind": "range",
+    "min": 0,
+    "max": 1,
+    "step": 0.05,
+    "default": 0.5,
+    "label": "Color amount"
 }
 ```
 

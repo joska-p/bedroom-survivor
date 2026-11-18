@@ -77,11 +77,11 @@ Every entry applied:
 
 ```json
 {
-  "status": "done",
-  "appliedEntryIds": ["entry-id"],
-  "failed": [],
-  "files": ["src/App.jsx"],
-  "notes": []
+    "status": "done",
+    "appliedEntryIds": ["entry-id"],
+    "failed": [],
+    "files": ["src/App.jsx"],
+    "notes": []
 }
 ```
 
@@ -89,17 +89,17 @@ Some entries applied:
 
 ```json
 {
-  "status": "partial",
-  "appliedEntryIds": ["entry-id"],
-  "failed": [
-    {
-      "entryId": "other-entry",
-      "reason": "originalText not found",
-      "candidates": [{ "file": "src/App.jsx", "line": 42 }]
-    }
-  ],
-  "files": ["src/App.jsx"],
-  "notes": []
+    "status": "partial",
+    "appliedEntryIds": ["entry-id"],
+    "failed": [
+        {
+            "entryId": "other-entry",
+            "reason": "originalText not found",
+            "candidates": [{ "file": "src/App.jsx", "line": 42 }]
+        }
+    ],
+    "files": ["src/App.jsx"],
+    "notes": []
 }
 ```
 
@@ -107,12 +107,12 @@ No entries applied:
 
 ```json
 {
-  "status": "error",
-  "appliedEntryIds": [],
-  "failed": [{ "entryId": "entry-id", "reason": "could not resolve source" }],
-  "files": [],
-  "notes": [],
-  "message": "could not resolve source"
+    "status": "error",
+    "appliedEntryIds": [],
+    "failed": [{ "entryId": "entry-id", "reason": "could not resolve source" }],
+    "files": [],
+    "notes": [],
+    "message": "could not resolve source"
 }
 ```
 

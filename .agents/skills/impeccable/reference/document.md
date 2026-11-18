@@ -11,32 +11,32 @@ The YAML frontmatter is the machine-readable layer. It's what Stitch's linter va
 name: <project title>
 description: <one-line tagline>
 colors:
-  primary: "#b8422e"
-  neutral-bg: "#faf7f2"
-  # ...one entry per extracted color; key = descriptive slug
+    primary: '#b8422e'
+    neutral-bg: '#faf7f2'
+    # ...one entry per extracted color; key = descriptive slug
 typography:
-  display:
-    fontFamily: "Cormorant Garamond, Georgia, serif"
-    fontSize: "4.5rem"
-    fontWeight: 300
-    lineHeight: 1
-    letterSpacing: "0em"
-  body:
-    # ...
+    display:
+        fontFamily: 'Cormorant Garamond, Georgia, serif'
+        fontSize: '4.5rem'
+        fontWeight: 300
+        lineHeight: 1
+        letterSpacing: '0em'
+    body:
+        # ...
 rounded:
-  sm: "4px"
-  md: "8px"
+    sm: '4px'
+    md: '8px'
 spacing:
-  sm: "8px"
-  md: "16px"
+    sm: '8px'
+    md: '16px'
 components:
-  button-primary:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.neutral-bg}"
-    rounded: "{rounded.sm}"
-    padding: "16px 48px"
-  button-primary-hover:
-    backgroundColor: "{colors.primary-deep}"
+    button-primary:
+        backgroundColor: '{colors.primary}'
+        textColor: '{colors.neutral-bg}'
+        rounded: '{rounded.sm}'
+        padding: '16px 48px'
+    button-primary-hover:
+        backgroundColor: '{colors.primary-deep}'
 ---
 ```
 
@@ -136,7 +136,7 @@ The file opens with the YAML frontmatter staged in Step 2b (schema documented at
 name: [Project Title]
 description: [one-line tagline]
 colors:
-  # ... staged frontmatter from Step 2b
+    # ... staged frontmatter from Step 2b
 ---
 
 # Design System: [Project Title]
@@ -277,63 +277,67 @@ Regenerate the sidecar whenever you regenerate root `DESIGN.md`. If the user onl
 
 ```json
 {
-  "schemaVersion": 2,
-  "generatedAt": "ISO-8601 string",
-  "title": "Design System: [Project Title]",
-  "extensions": {
-    "colorMeta": {
-      "primary": {
-        "role": "primary",
-        "displayName": "Editorial Magenta",
-        "canonical": "oklch(60% 0.25 350)",
-        "tonalRamp": ["...", "...", "..."]
-      },
-      "cool-paper": {
-        "role": "neutral",
-        "displayName": "Cool Paper",
-        "canonical": "oklch(96% 0.005 230)",
-        "tonalRamp": ["...", "...", "..."]
-      }
+    "schemaVersion": 2,
+    "generatedAt": "ISO-8601 string",
+    "title": "Design System: [Project Title]",
+    "extensions": {
+        "colorMeta": {
+            "primary": {
+                "role": "primary",
+                "displayName": "Editorial Magenta",
+                "canonical": "oklch(60% 0.25 350)",
+                "tonalRamp": ["...", "...", "..."]
+            },
+            "cool-paper": {
+                "role": "neutral",
+                "displayName": "Cool Paper",
+                "canonical": "oklch(96% 0.005 230)",
+                "tonalRamp": ["...", "...", "..."]
+            }
+        },
+        "typographyMeta": {
+            "display": { "displayName": "Display", "purpose": "Hero headlines only." }
+        },
+        "shadows": [
+            {
+                "name": "ambient-low",
+                "value": "0 4px 24px rgba(0,0,0,0.12)",
+                "purpose": "Diffuse hover glow under accent elements."
+            }
+        ],
+        "motion": [
+            {
+                "name": "ease-standard",
+                "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+                "purpose": "Default easing for state transitions."
+            }
+        ],
+        "breakpoints": [{ "name": "sm", "value": "640px" }]
     },
-    "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Hero headlines only." }
-    },
-    "shadows": [
-      {
-        "name": "ambient-low",
-        "value": "0 4px 24px rgba(0,0,0,0.12)",
-        "purpose": "Diffuse hover glow under accent elements."
-      }
+    "components": [
+        {
+            "name": "Primary Button",
+            "kind": "button | input | nav | chip | card | custom",
+            "refersTo": "button-primary",
+            "description": "One-line what and when.",
+            "html": "<button class=\"ds-btn-primary\">SAVE CHANGES</button>",
+            "css": ".ds-btn-primary { background: #191c1d; color: #fff; padding: 16px 48px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500; border: none; border-radius: 0; transition: background 0.2s, transform 0.2s; } .ds-btn-primary:hover { background: oklch(60% 0.25 350); transform: translateY(-2px); }"
+        }
     ],
-    "motion": [
-      {
-        "name": "ease-standard",
-        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
-        "purpose": "Default easing for state transitions."
-      }
-    ],
-    "breakpoints": [{ "name": "sm", "value": "640px" }]
-  },
-  "components": [
-    {
-      "name": "Primary Button",
-      "kind": "button | input | nav | chip | card | custom",
-      "refersTo": "button-primary",
-      "description": "One-line what and when.",
-      "html": "<button class=\"ds-btn-primary\">SAVE CHANGES</button>",
-      "css": ".ds-btn-primary { background: #191c1d; color: #fff; padding: 16px 48px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500; border: none; border-radius: 0; transition: background 0.2s, transform 0.2s; } .ds-btn-primary:hover { background: oklch(60% 0.25 350); transform: translateY(-2px); }"
+    "narrative": {
+        "northStar": "The Editorial Sanctuary",
+        "overview": "2-3 paragraphs of the philosophy, pulled from DESIGN.md Overview section.",
+        "keyCharacteristics": ["...", "..."],
+        "rules": [
+            {
+                "name": "The One Voice Rule",
+                "body": "...",
+                "section": "colors|typography|elevation"
+            }
+        ],
+        "dos": ["Do use ..."],
+        "donts": ["Don't use ..."]
     }
-  ],
-  "narrative": {
-    "northStar": "The Editorial Sanctuary",
-    "overview": "2-3 paragraphs of the philosophy, pulled from DESIGN.md Overview section.",
-    "keyCharacteristics": ["...", "..."],
-    "rules": [
-      { "name": "The One Voice Rule", "body": "...", "section": "colors|typography|elevation" }
-    ],
-    "dos": ["Do use ..."],
-    "donts": ["Don't use ..."]
-  }
 }
 ```
 

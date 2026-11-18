@@ -38,8 +38,8 @@ Store them as **stable references** when application-wide reachability is useful
 
 ```ts
 interface EngineSlice {
-  engine: Engine | null;
-  setEngine(engine: Engine): void;
+    engine: Engine | null;
+    setEngine(engine: Engine): void;
 }
 ```
 
@@ -156,11 +156,11 @@ They should call domain logic rather than becoming the domain logic.
 
 ```ts
 export function mountEngine(canvas: HTMLCanvasElement) {
-  const engine = createEngine(canvas);
+    const engine = createEngine(canvas);
 
-  engineStore.setState({ engine });
+    engineStore.setState({ engine });
 
-  engine.start();
+    engine.start();
 }
 ```
 

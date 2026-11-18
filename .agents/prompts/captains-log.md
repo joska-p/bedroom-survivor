@@ -38,26 +38,26 @@ La date reste la SSOT. Les entrées dupliquées (même stardate) sont à éviter
 Chaque fichier exporte une valeur `CaptainLog` (voir `types.ts`). Contenu JSX brut (pas de classes ni styles), pas de Markdown.
 
 ```tsx
-import type { CaptainLog } from "../types";
+import type { CaptainLog } from '../types';
 
 export const logYYYYNNN: CaptainLog = {
-  id: "stardate-YYYY-NNN",
-  stardate: "YYYY.NNN",
-  date: "YYYY-MM-DD",
-  headingSuffix: undefined, // ex. 'Supplément', optionnel
-  details: [
-    { label: "Localisation", value: <>Secteur …</> },
-    { label: "Sujet", value: <>…</> },
-  ],
-  content: (
-    <>
-      <p>…</p>
+    id: 'stardate-YYYY-NNN',
+    stardate: 'YYYY.NNN',
+    date: 'YYYY-MM-DD',
+    headingSuffix: undefined, // ex. 'Supplément', optionnel
+    details: [
+        { label: 'Localisation', value: <>Secteur …</> },
+        { label: 'Sujet', value: <>…</> },
+    ],
+    content: (
+        <>
+            <p>…</p>
 
-      <p>
-        <em>Journal clos.</em>
-      </p>
-    </>
-  ),
+            <p>
+                <em>Journal clos.</em>
+            </p>
+        </>
+    ),
 };
 ```
 

@@ -3,6 +3,6 @@
  * bootstrap and the experiment lifecycle.
  */
 
-import { initPage } from "../../ui/page";
+import { initPage } from '../../ui/page';
 
 initPage();

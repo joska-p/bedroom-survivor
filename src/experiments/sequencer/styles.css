@@ -1,43 +1,43 @@
 /* Sequencer-specific layer editor on top of the shared shell and control classes. */
 
 .pg-sequencer__section {
-  padding-top: var(--pg-space-3);
-  border-top: var(--pg-border-hairline) solid var(--pg-color-neutral);
+    padding-top: var(--pg-space-3);
+    border-top: var(--pg-border-hairline) solid var(--pg-color-neutral);
 }
 
 .pg-sequencer__layers {
-  display: grid;
-  gap: var(--pg-space-2);
-  margin-bottom: var(--pg-space-2);
+    display: grid;
+    gap: var(--pg-space-2);
+    margin-bottom: var(--pg-space-2);
 }
 
 .pg-sequencer__layer-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  align-items: center;
-  gap: var(--pg-space-2);
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: var(--pg-space-2);
 }
 
 .pg-sequencer__layer-row label {
-  display: flex;
-  align-items: center;
-  gap: var(--pg-space-2);
+    display: flex;
+    align-items: center;
+    gap: var(--pg-space-2);
 }
 
 .pg-sequencer__layer-row button {
-  min-width: var(--pg-layout-control-touch-target);
+    min-width: var(--pg-layout-control-touch-target);
 }
 
 .pg-sequencer__options {
-  display: grid;
-  gap: var(--pg-space-2);
-  margin-top: var(--pg-space-3);
-  padding: var(--pg-space-3);
-  border: var(--pg-border-hairline) solid var(--pg-color-neutral);
-  border-radius: var(--pg-radius-sm);
+    display: grid;
+    gap: var(--pg-space-2);
+    margin-top: var(--pg-space-3);
+    padding: var(--pg-space-3);
+    border: var(--pg-border-hairline) solid var(--pg-color-neutral);
+    border-radius: var(--pg-radius-sm);
 }
 
 .pg-sequencer__options h4 {
-  margin: 0;
-  font-size: var(--pg-font-size-sm);
+    margin: 0;
+    font-size: var(--pg-font-size-sm);
 }

@@ -43,13 +43,13 @@ Before writing a session plan, perform a rigorous discovery phase:
 1. **Baseline Health Check**: Run `vp check` / tests to confirm the starting state is green.
 2. **Usage & Dependency Audit**: Search all call sites across the monorepo (`rg`, AST, package.json).
 3. **Contract Gap Analysis**:
-   - Compare source vs target APIs.
-   - Scrutinize units and coordinates (e.g. CSS pixels vs physical/device pixels, aspect ratios).
-   - Identify lifecycle subtleties (context loss/restore, resize, resource tracking, subscription cleanup).
+    - Compare source vs target APIs.
+    - Scrutinize units and coordinates (e.g. CSS pixels vs physical/device pixels, aspect ratios).
+    - Identify lifecycle subtleties (context loss/restore, resize, resource tracking, subscription cleanup).
 4. **Categorize Findings**:
-   - **Blocking**: Must be resolved before consumer can function.
-   - **Cross-cutting Debts**: Cleanups that should be fixed at the source.
-   - **Explicit Non-goals**: Things that look tempting to build but must be deferred.
+    - **Blocking**: Must be resolved before consumer can function.
+    - **Cross-cutting Debts**: Cleanups that should be fixed at the source.
+    - **Explicit Non-goals**: Things that look tempting to build but must be deferred.
 
 See detailed template in [references/analysis_template.md](./references/analysis_template.md).
 
@@ -60,17 +60,17 @@ See detailed template in [references/analysis_template.md](./references/analysis
 `PLAN.md` is the **obligatory entry point** read at the start of every session. It must contain:
 
 - **Header**:
-  - `Status`: Current session progress and date.
-  - `Entry point`: Reminder that this file is read first.
-  - `Detailed analysis`: Link to `analyse.md`.
+    - `Status`: Current session progress and date.
+    - `Entry point`: Reminder that this file is read first.
+    - `Detailed analysis`: Link to `analyse.md`.
 - **Goal**: High-level intent and core architecture principles.
 - **Current state**: Chronological log of what landed session-by-session.
 - **Decisions**: Table of key architectural choices and agreed conventions.
 - **Session plan**: Sessions 1 to N, each structured as:
-  - `### Session X — <Title> [— ✅ complete (YYYY-MM-DD)]`
-  - `**Intent:**` Why this session exists.
-  - `**Deliverables:**` Bullet list of files and modifications.
-  - `**Verify:**` Exact shell commands or test scenarios.
+    - `### Session X — <Title> [— ✅ complete (YYYY-MM-DD)]`
+    - `**Intent:**` Why this session exists.
+    - `**Deliverables:**` Bullet list of files and modifications.
+    - `**Verify:**` Exact shell commands or test scenarios.
 - **Guardrails**: Explicit negative constraints.
 - **Useful commands**: Copy-pasteable CLI commands.
 - **Next action**: Explicit pointer to the active session.
@@ -103,13 +103,13 @@ During each session, follow this strict lifecycle:
 ### Step 4: Close Session & Handoff
 
 - Update `_TMP/<project>/PLAN.md`:
-  - Update `Status` header.
-  - Append completed deliverables to `Current state`.
-  - Mark session header with `— ✅ complete (date)`.
-  - Update `Next action` to point to Session N+1 (or mark closed if final).
+    - Update `Status` header.
+    - Append completed deliverables to `Current state`.
+    - Mark session header with `— ✅ complete (date)`.
+    - Update `Next action` to point to Session N+1 (or mark closed if final).
 - Commit code changes to git:
-  - Format: `<type>(<scope>): <summary> (session N)`
-  - Do NOT commit `_TMP/` files.
+    - Format: `<type>(<scope>): <summary> (session N)`
+    - Do NOT commit `_TMP/` files.
 - (Optional) Prepare `_TMP/<project>/prompt.md` with instructions for the next agent turn.
 
 See prompt template in [references/session_prompt_template.md](./references/session_prompt_template.md).

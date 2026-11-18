@@ -1,9 +1,9 @@
-import type { ShaderTemplate } from "../types";
+import type { ShaderTemplate } from '../types';
 
 const ClassicTemplate: ShaderTemplate = {
-  name: "classic",
-  weight: 1.0,
-  generate: ({ spaceBlock, shapeBlock, effectBlock, palette, uniqueInjectedCode }) => `
+    name: 'classic',
+    weight: 1.0,
+    generate: ({ spaceBlock, shapeBlock, effectBlock, palette, uniqueInjectedCode }) => `
     ${uniqueInjectedCode}
 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {

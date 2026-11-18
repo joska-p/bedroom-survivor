@@ -4,45 +4,45 @@
  */
 
 function getRandom<T>(array: readonly T[]): T {
-  const item = array[Math.floor(Math.random() * array.length)];
+    const item = array[Math.floor(Math.random() * array.length)];
 
-  if (item === undefined) {
-    throw new Error("Cannot get random item from empty array");
-  }
+    if (item === undefined) {
+        throw new Error('Cannot get random item from empty array');
+    }
 
-  return item;
+    return item;
 }
 
 function shuffleArray<T extends readonly unknown[]>(array: T): [...T] {
-  const result = [...array] as [...T];
+    const result = [...array] as [...T];
 
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    for (let i = result.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
 
-    const temp = result[i];
+        const temp = result[i];
 
-    result[i] = result[j];
-    result[j] = temp;
-  }
+        result[i] = result[j];
+        result[j] = temp;
+    }
 
-  return result;
+    return result;
 }
 
 function shuffleObject<Value>(object: Record<string, Value>): Record<string, Value> {
-  const keys = Object.keys(object);
-  const values = Object.values(object);
-  const shuffledValues = shuffleArray(values);
-  const shuffled: Record<string, Value> = {};
+    const keys = Object.keys(object);
+    const values = Object.values(object);
+    const shuffledValues = shuffleArray(values);
+    const shuffled: Record<string, Value> = {};
 
-  shuffledValues.forEach((value, index) => {
-    const key = keys[index];
+    shuffledValues.forEach((value, index) => {
+        const key = keys[index];
 
-    if (key !== undefined) {
-      shuffled[key] = value;
-    }
-  });
+        if (key !== undefined) {
+            shuffled[key] = value;
+        }
+    });
 
-  return shuffled;
+    return shuffled;
 }
 
 export { getRandom, shuffleArray, shuffleObject };

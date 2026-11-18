@@ -1,29 +1,29 @@
 {
-  "name": "bedroom-survivor",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vp dev",
-    "build": "tsc && vp build",
-    "preview": "vp preview",
-    "prepare": "vp config"
-  },
-  "dependencies": {
-    "colorjs.io": "^0.7.1"
-  },
-  "devDependencies": {
-    "@types/node": "^26.6.6",
-    "fast-check": "^4.10.2",
-    "typescript": "~7.0.2",
-    "vite": "catalog:",
-    "vite-plus": "catalog:"
-  },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "12.21.0",
-      "onFail": "download"
+    "name": "bedroom-survivor",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vp dev",
+        "build": "tsc && vp build",
+        "preview": "vp preview",
+        "prepare": "vp config"
+    },
+    "dependencies": {
+        "colorjs.io": "^0.7.1"
+    },
+    "devDependencies": {
+        "@types/node": "^26.6.6",
+        "fast-check": "^4.10.2",
+        "typescript": "~7.0.2",
+        "vite": "catalog:",
+        "vite-plus": "catalog:"
+    },
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "version": "12.21.0",
+            "onFail": "download"
+        }
     }
-  }
 }

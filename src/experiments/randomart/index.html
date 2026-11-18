@@ -1,80 +1,195 @@
 <!doctype html>
 <html lang="fr" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pg_lab — Randomart</title>
-    <link rel="stylesheet" href="../../ui/styles/main.css" />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <pg-shell class="pg-shell">
-      <section class="pg-shell__stage" aria-label="Randomart">
-        <div class="pg-intro">
-          <h1>Randomart</h1>
-          <p class="pg-lead">
-            Une grammaire, une graine et un espace de couleur : le shader est généré, compilé puis
-            affiché en WebGL2.
-          </p>
-        </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>pg_lab — Randomart</title>
+        <link rel="stylesheet" href="../../ui/styles/main.css" />
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <pg-shell class="pg-shell">
+            <section class="pg-shell__stage" aria-label="Randomart">
+                <div class="pg-intro">
+                    <h1>Randomart</h1>
+                    <p class="pg-lead">
+                        Une grammaire, une graine et un espace de couleur : le shader est généré,
+                        compilé puis affiché en WebGL2.
+                    </p>
+                </div>
 
-        <div class="pg-canvas-viewport">
-          <canvas class="pg-canvas" data-canvas aria-label="Rendu randomart"></canvas>
-          <p class="pg-canvas__error pg-error" data-error role="alert" hidden></p>
-        </div>
+                <div class="pg-canvas-viewport">
+                    <canvas class="pg-canvas" data-canvas aria-label="Rendu randomart"></canvas>
+                    <p class="pg-canvas__error pg-error" data-error role="alert" hidden></p>
+                </div>
 
-        <p class="pg-loading pg-randomart__loading" data-loading hidden>Compilation du shader…</p>
-        <p class="pg-status pg-randomart__status pg-status--spaced" data-status aria-live="polite">
-          Initialisation…
-        </p>
-      </section>
+                <p class="pg-loading pg-randomart__loading" data-loading hidden>
+                    Compilation du shader…
+                </p>
+                <p
+                    class="pg-status pg-randomart__status pg-status--spaced"
+                    data-status
+                    aria-live="polite"
+                >
+                    Initialisation…
+                </p>
+            </section>
 
-      <aside class="pg-shell__panel" aria-label="Contrôles">
-        <button type="button" class="pg-shell__handle" aria-hidden="true" tabindex="-1">≶</button>
-        <div class="pg-shell__content">
-          <h2>Contrôles</h2>
+            <aside class="pg-shell__panel" aria-label="Contrôles">
+                <button type="button" class="pg-shell__handle" aria-hidden="true" tabindex="-1">
+                    ≶
+                </button>
+                <div class="pg-shell__content">
+                    <h2>Contrôles</h2>
 
-          <label class="pg-control">
-            <span>Grammaire</span>
-            <span data-control="grammar"></span>
-          </label>
+                    <!-- Actions courantes : lecture et artwork. -->
+                    <div class="pg-stack--md pg-randomart__actions">
+                        <div class="pg-grid--2">
+                            <button type="button" data-play-toggle data-playing="false" disabled>
+                                Lecture
+                            </button>
+                            <button type="button" data-play-reset disabled>Réinitialiser</button>
+                        </div>
+                        <div class="pg-grid--2">
+                            <button type="button" data-new-seed>Nouvelle graine</button>
+                            <button type="button" data-export-png>Exporter PNG</button>
+                        </div>
+                    </div>
 
-          <label class="pg-control">
-            <span>Graine</span>
-            <span data-control="seed"></span>
-          </label>
-          <button type="button" data-new-seed>Nouvelle graine</button>
+                    <section class="pg-section" aria-labelledby="randomart-grammar-title">
+                        <h3 id="randomart-grammar-title">Grammaire</h3>
+                        <label class="pg-control">
+                            <span>Préréglage</span>
+                            <span data-control="grammar"></span>
+                        </label>
+                        <div class="pg-actions">
+                            <button type="button" data-random-grammar>Grammaire aléatoire</button>
+                        </div>
+                    </section>
 
-          <label class="pg-control">
-            <span>Espace de couleur</span>
-            <span data-control="space"></span>
-          </label>
+                    <section class="pg-section" aria-labelledby="randomart-color-title">
+                        <h3 id="randomart-color-title">Couleur</h3>
+                        <label class="pg-control">
+                            <span>Espace de couleur</span>
+                            <span data-control="space"></span>
+                        </label>
+                    </section>
 
-          <div class="pg-control pg-control--inline">
-            <span>Lecture</span>
-            <button type="button" data-play-toggle data-playing="false">Lecture</button>
-          </div>
+                    <section class="pg-section" aria-labelledby="randomart-post-title">
+                        <h3 id="randomart-post-title">Post-traitement</h3>
+                        <label class="pg-control pg-control--inline">
+                            <span>Grain</span>
+                            <span data-control="effect-grain"></span>
+                        </label>
+                        <label class="pg-control pg-control--inline">
+                            <span>Minimum lissé</span>
+                            <span data-control="effect-smin"></span>
+                        </label>
+                        <label class="pg-control pg-control--inline">
+                            <span>Maximum lissé</span>
+                            <span data-control="effect-smax"></span>
+                        </label>
+                    </section>
 
-          <button type="button" data-regenerate>Régénérer</button>
+                    <section class="pg-section" aria-labelledby="randomart-seed-title">
+                        <h3 id="randomart-seed-title">Graine</h3>
+                        <label class="pg-control pg-control--stacked">
+                            <span>Graine</span>
+                            <span data-control="seed"></span>
+                        </label>
+                        <p class="pg-hint">1 à 64 caractères. Valider avec Entrée.</p>
+                    </section>
 
-          <p class="pg-badge pg-randomart__stats" data-stats>Taille : — · Animé : —</p>
+                    <section class="pg-section" aria-labelledby="randomart-weights-title">
+                        <h3 id="randomart-weights-title">Poids des opérateurs</h3>
+                        <div class="pg-stack pg-randomart__weights" data-weights></div>
+                    </section>
 
-          <section class="pg-section" aria-labelledby="randomart-details-title">
-            <h3 id="randomart-details-title">Détails du shader</h3>
-            <details class="pg-card pg-randomart__details">
-              <summary>Formule</summary>
-              <pre class="pg-code pg-code--wrap"><code data-formula></code></pre>
-            </details>
-            <details class="pg-card pg-randomart__details">
-              <summary>Code source du shader</summary>
-              <pre class="pg-code pg-code--wrap"><code data-shader-source></code></pre>
-            </details>
-          </section>
+                    <section class="pg-section" aria-labelledby="randomart-structure-title">
+                        <h3 id="randomart-structure-title">Structure</h3>
+                        <div class="pg-stack pg-randomart__structure">
+                            <label class="pg-control pg-control--inline">
+                                <span>Profondeur min.</span>
+                                <span data-control="min-depth"></span>
+                                <output data-value="min-depth">—</output>
+                            </label>
+                            <label class="pg-control pg-control--inline">
+                                <span>Profondeur max.</span>
+                                <span data-control="max-depth"></span>
+                                <output data-value="max-depth">—</output>
+                            </label>
+                            <label class="pg-control pg-control--inline">
+                                <span>Nœuds max.</span>
+                                <span data-control="max-nodes"></span>
+                                <output data-value="max-nodes">—</output>
+                            </label>
+                            <label class="pg-control pg-control--inline">
+                                <span>Partagé</span>
+                                <span data-control="share-depth"></span>
+                                <output data-value="share-depth">—</output>
+                            </label>
+                        </div>
+                    </section>
 
-          <button type="button" data-theme-toggle>Thème</button>
-        </div>
-      </aside>
-    </pg-shell>
-    <script type="module" src="./main.ts"></script>
-  </body>
+                    <section class="pg-section" aria-labelledby="randomart-expression-title">
+                        <h3 id="randomart-expression-title">Expression</h3>
+                        <div class="pg-stack">
+                            <div class="pg-control" data-inspector="mono" hidden>
+                                <span data-inspector-label="mono">Champ</span>
+                                <code class="pg-randomart__formula" data-formula="mono"></code>
+                            </div>
+                            <div class="pg-control" data-inspector="r">
+                                <span data-inspector-label="r">Canal r</span>
+                                <code class="pg-randomart__formula" data-formula="r"></code>
+                            </div>
+                            <div class="pg-control" data-inspector="g">
+                                <span data-inspector-label="g">Canal g</span>
+                                <code class="pg-randomart__formula" data-formula="g"></code>
+                            </div>
+                            <div class="pg-control" data-inspector="b">
+                                <span data-inspector-label="b">Canal b</span>
+                                <code class="pg-randomart__formula" data-formula="b"></code>
+                            </div>
+                            <p class="pg-badge pg-randomart__stats" data-stats>
+                                Taille : — · Animé : —
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="pg-section" aria-labelledby="randomart-shader-title">
+                        <h3 id="randomart-shader-title">Shader GLSL</h3>
+                        <details class="pg-card pg-randomart__details">
+                            <summary>Voir le shader GLSL</summary>
+                            <p class="pg-hint">Shadertoy, onglet Image.</p>
+                            <textarea
+                                class="pg-code pg-randomart__shader-code"
+                                data-shader-code
+                                rows="12"
+                                readonly
+                            ></textarea>
+                            <button type="button" data-copy-shader>Copier pour Shadertoy</button>
+                        </details>
+                    </section>
+
+                    <section
+                        class="pg-section"
+                        data-panel-error-section
+                        hidden
+                        aria-labelledby="randomart-error-title"
+                    >
+                        <h3 id="randomart-error-title">Erreurs</h3>
+                        <p
+                            class="pg-error pg-randomart__panel-error"
+                            data-panel-error
+                            role="alert"
+                        ></p>
+                    </section>
+
+                    <button type="button" data-regenerate>Régénérer</button>
+                    <button type="button" data-theme-toggle>Thème</button>
+                </div>
+            </aside>
+        </pg-shell>
+        <script type="module" src="./main.ts"></script>
+    </body>
 </html>

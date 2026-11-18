@@ -2,124 +2,124 @@
 name: pg_lab
 description: A personal laboratory of generative-art experiments built with native DOM and OKLCH color.
 colors:
-  warm-paper: "oklch(0.956 0.055 96.155 / 0.5)"
-  charcoal-veil: "oklch(0.277 0 0 / 0.5)"
-  lab-ink: "oklch(0.277 0 0)"
-  paper-ink: "oklch(0.956 0.055 96.155)"
-  muted-ink: "oklch(0.482 0.018 61.042)"
-  muted-chalk: "oklch(0.69 0.035 76.307)"
-  hairline-warm: "oklch(0.825 0.051 85.116)"
-  hairline-cool: "oklch(0.411 0.012 51.866)"
-  teal-signal: "oklch(0.693 0.042 169.768)"
-  dusk-blue: "oklch(0.471 0.082 215.806)"
-  solder-green: "oklch(0.765 0.158 110.835)"
-  solder-deep: "oklch(0.546 0.112 106.464)"
-  beacon-amber: "oklch(0.832 0.159 82.987)"
-  beacon-deep: "oklch(0.618 0.128 70.674)"
-  ember-red: "oklch(0.66 0.218 30.392)"
-  ember-deep: "oklch(0.437 0.179 28.26)"
-  spectral-purple: "oklch(0.705 0.098 2.189)"
-  spectral-purple-deep: "oklch(0.489 0.124 344.276)"
-  circuit-aqua: "oklch(0.756 0.108 137.676)"
-  circuit-aqua-deep: "oklch(0.534 0.082 155.401)"
-  copper-orange: "oklch(0.731 0.182 51.693)"
-  copper-orange-deep: "oklch(0.513 0.162 39.297)"
-  canvas-well: "oklch(0.241 0.005 219.672)"
+    warm-paper: 'oklch(0.956 0.055 96.155 / 0.5)'
+    charcoal-veil: 'oklch(0.277 0 0 / 0.5)'
+    lab-ink: 'oklch(0.277 0 0)'
+    paper-ink: 'oklch(0.956 0.055 96.155)'
+    muted-ink: 'oklch(0.482 0.018 61.042)'
+    muted-chalk: 'oklch(0.69 0.035 76.307)'
+    hairline-warm: 'oklch(0.825 0.051 85.116)'
+    hairline-cool: 'oklch(0.411 0.012 51.866)'
+    teal-signal: 'oklch(0.693 0.042 169.768)'
+    dusk-blue: 'oklch(0.471 0.082 215.806)'
+    solder-green: 'oklch(0.765 0.158 110.835)'
+    solder-deep: 'oklch(0.546 0.112 106.464)'
+    beacon-amber: 'oklch(0.832 0.159 82.987)'
+    beacon-deep: 'oklch(0.618 0.128 70.674)'
+    ember-red: 'oklch(0.66 0.218 30.392)'
+    ember-deep: 'oklch(0.437 0.179 28.26)'
+    spectral-purple: 'oklch(0.705 0.098 2.189)'
+    spectral-purple-deep: 'oklch(0.489 0.124 344.276)'
+    circuit-aqua: 'oklch(0.756 0.108 137.676)'
+    circuit-aqua-deep: 'oklch(0.534 0.082 155.401)'
+    copper-orange: 'oklch(0.731 0.182 51.693)'
+    copper-orange-deep: 'oklch(0.513 0.162 39.297)'
+    canvas-well: 'oklch(0.241 0.005 219.672)'
 typography:
-  display:
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    fontSize: "2.25rem"
-    fontWeight: 600
-    lineHeight: 1.5
-    letterSpacing: "0em"
-  headline:
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    fontSize: "1.25rem"
-    fontWeight: 600
-    lineHeight: 1.5
-    letterSpacing: "0em"
-  title:
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 600
-    lineHeight: 1.5
-    letterSpacing: "0em"
-  body:
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: "0em"
-  label:
-    fontFamily: "'SFMono-Regular', Consolas, 'Liberation Mono', monospace"
-    fontSize: "0.75rem"
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: "0em"
+    display:
+        fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        fontSize: '2.25rem'
+        fontWeight: 600
+        lineHeight: 1.5
+        letterSpacing: '0em'
+    headline:
+        fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        fontSize: '1.25rem'
+        fontWeight: 600
+        lineHeight: 1.5
+        letterSpacing: '0em'
+    title:
+        fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        fontSize: '0.875rem'
+        fontWeight: 600
+        lineHeight: 1.5
+        letterSpacing: '0em'
+    body:
+        fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        fontSize: '1rem'
+        fontWeight: 400
+        lineHeight: 1.5
+        letterSpacing: '0em'
+    label:
+        fontFamily: "'SFMono-Regular', Consolas, 'Liberation Mono', monospace"
+        fontSize: '0.75rem'
+        fontWeight: 400
+        lineHeight: 1.5
+        letterSpacing: '0em'
 rounded:
-  none: "0px"
-  sm: "4px"
-  md: "6px"
-  lg: "8px"
-  full: "9999px"
+    none: '0px'
+    sm: '4px'
+    md: '6px'
+    lg: '8px'
+    full: '9999px'
 spacing:
-  "0": "0px"
-  "1": "4px"
-  "2": "8px"
-  "3": "12px"
-  "4": "16px"
-  "5": "20px"
-  "6": "24px"
-  "8": "32px"
-  "10": "40px"
-  "12": "48px"
-  "16": "64px"
+    '0': '0px'
+    '1': '4px'
+    '2': '8px'
+    '3': '12px'
+    '4': '16px'
+    '5': '20px'
+    '6': '24px'
+    '8': '32px'
+    '10': '40px'
+    '12': '48px'
+    '16': '64px'
 components:
-  button-shared:
-    backgroundColor: "transparent"
-    textColor: "{colors.lab-ink}"
-    rounded: "{rounded.sm}"
-    padding: "0 12px"
-    height: "44px"
-  button-shared-hover:
-    backgroundColor: "{colors.hairline-warm}"
-    textColor: "{colors.lab-ink}"
-    rounded: "{rounded.sm}"
-    padding: "0 12px"
-    height: "44px"
-  card:
-    backgroundColor: "{colors.warm-paper}"
-    rounded: "{rounded.md}"
-    padding: "16px"
-  badge:
-    backgroundColor: "transparent"
-    textColor: "{colors.lab-ink}"
-    rounded: "{rounded.full}"
-    padding: "4px 8px"
-  input-select:
-    backgroundColor: "{colors.warm-paper}"
-    textColor: "{colors.lab-ink}"
-    rounded: "{rounded.sm}"
-    padding: "8px 12px"
-  status-ok:
-    backgroundColor: "oklch(0.765 0.158 110.835 / 0.12)"
-    textColor: "{colors.solder-green}"
-    rounded: "{rounded.full}"
-    padding: "4px 8px"
-  status-error:
-    backgroundColor: "oklch(0.66 0.218 30.392 / 0.12)"
-    textColor: "{colors.ember-red}"
-    rounded: "{rounded.full}"
-    padding: "4px 8px"
-  status-pending:
-    backgroundColor: "oklch(0.832 0.159 82.987 / 0.12)"
-    textColor: "{colors.beacon-amber}"
-    rounded: "{rounded.full}"
-    padding: "4px 8px"
-  canvas-viewport:
-    backgroundColor: "{colors.canvas-well}"
-    rounded: "{rounded.md}"
-    height: "280px"
+    button-shared:
+        backgroundColor: 'transparent'
+        textColor: '{colors.lab-ink}'
+        rounded: '{rounded.sm}'
+        padding: '0 12px'
+        height: '44px'
+    button-shared-hover:
+        backgroundColor: '{colors.hairline-warm}'
+        textColor: '{colors.lab-ink}'
+        rounded: '{rounded.sm}'
+        padding: '0 12px'
+        height: '44px'
+    card:
+        backgroundColor: '{colors.warm-paper}'
+        rounded: '{rounded.md}'
+        padding: '16px'
+    badge:
+        backgroundColor: 'transparent'
+        textColor: '{colors.lab-ink}'
+        rounded: '{rounded.full}'
+        padding: '4px 8px'
+    input-select:
+        backgroundColor: '{colors.warm-paper}'
+        textColor: '{colors.lab-ink}'
+        rounded: '{rounded.sm}'
+        padding: '8px 12px'
+    status-ok:
+        backgroundColor: 'oklch(0.765 0.158 110.835 / 0.12)'
+        textColor: '{colors.solder-green}'
+        rounded: '{rounded.full}'
+        padding: '4px 8px'
+    status-error:
+        backgroundColor: 'oklch(0.66 0.218 30.392 / 0.12)'
+        textColor: '{colors.ember-red}'
+        rounded: '{rounded.full}'
+        padding: '4px 8px'
+    status-pending:
+        backgroundColor: 'oklch(0.832 0.159 82.987 / 0.12)'
+        textColor: '{colors.beacon-amber}'
+        rounded: '{rounded.full}'
+        padding: '4px 8px'
+    canvas-viewport:
+        backgroundColor: '{colors.canvas-well}'
+        rounded: '{rounded.md}'
+        height: '280px'
 ---
 
 # Design System: pg_lab

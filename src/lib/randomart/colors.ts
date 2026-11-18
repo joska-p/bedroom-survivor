@@ -5,15 +5,15 @@
  * The entry point of each space is named `ra_<id>`; `colorSpaceFunction` derives that name, so a
  * source cannot drift from its registry key.
  */
-import { RandomArtError } from "./errors";
+import { RandomArtError } from './errors';
 
 export interface ColorSpace<TId extends string = string> {
-  /** Stable registry key, also the suffix of the `ra_<id>` entry point. */
-  readonly id: TId;
-  /** Name shown to the user. */
-  readonly label: string;
-  /** GLSL definition of `vec3 ra_<id>(vec3 raw)`, plus any helper it uses. */
-  readonly source: string;
+    /** Stable registry key, also the suffix of the `ra_<id>` entry point. */
+    readonly id: TId;
+    /** Name shown to the user. */
+    readonly label: string;
+    /** GLSL definition of `vec3 ra_<id>(vec3 raw)`, plus any helper it uses. */
+    readonly source: string;
 }
 
 const GAMUT_MAPPING_STEPS = 12;
@@ -59,17 +59,17 @@ vec3 ra_oklabToSrgb(vec3 lab) {
 }`;
 
 const srgb = {
-  id: "srgb",
-  label: "sRGB",
-  source: `vec3 ra_srgb(vec3 raw) {
+    id: 'srgb',
+    label: 'sRGB',
+    source: `vec3 ra_srgb(vec3 raw) {
     return clamp(raw * 0.5 + 0.5, 0.0, 1.0);
 }`,
 } as const satisfies ColorSpace;
 
 const oklch = {
-  id: "oklch",
-  label: "OKLCH",
-  source: `${OKLAB_TO_SRGB}
+    id: 'oklch',
+    label: 'OKLCH',
+    source: `${OKLAB_TO_SRGB}
 
 vec3 ra_oklch(vec3 raw) {
     float L = clamp(raw.x * 0.5 + 0.5, 0.0, 1.0);
@@ -80,9 +80,9 @@ vec3 ra_oklch(vec3 raw) {
 } as const satisfies ColorSpace;
 
 const oklab = {
-  id: "oklab",
-  label: "OKLab",
-  source: `${OKLAB_TO_SRGB}
+    id: 'oklab',
+    label: 'OKLab',
+    source: `${OKLAB_TO_SRGB}
 
 vec3 ra_oklab(vec3 raw) {
     float L = clamp(raw.x * 0.5 + 0.5, 0.0, 1.0);
@@ -91,9 +91,9 @@ vec3 ra_oklab(vec3 raw) {
 } as const satisfies ColorSpace;
 
 const hsl = {
-  id: "hsl",
-  label: "HSL",
-  source: `vec3 ra_hsl(vec3 raw) {
+    id: 'hsl',
+    label: 'HSL',
+    source: `vec3 ra_hsl(vec3 raw) {
     float h = raw.x * 0.5 + 0.5;
     float s = abs(raw.y);
     float l = clamp(raw.z * 0.5 + 0.5, 0.0, 1.0);
@@ -107,10 +107,10 @@ export const COLOR_SPACES = [srgb, oklch, oklab, hsl] as const satisfies readonl
 
 // Derive the types directly from the registry.
 export type ColorSpaceDefinition = (typeof COLOR_SPACES)[number];
-export type ColorSpaceId = ColorSpaceDefinition["id"];
+export type ColorSpaceId = ColorSpaceDefinition['id'];
 
 const colorSpacesById = new Map<string, ColorSpaceDefinition>(
-  COLOR_SPACES.map((space): [ColorSpaceId, ColorSpaceDefinition] => [space.id, space]),
+    COLOR_SPACES.map((space): [ColorSpaceId, ColorSpaceDefinition] => [space.id, space]),
 );
 
 /**
@@ -118,17 +118,17 @@ const colorSpacesById = new Map<string, ColorSpaceDefinition>(
  * `ColorSpaceId` or has validated the input with `isColorSpaceId`.
  */
 export function getColorSpace(id: string): ColorSpaceDefinition {
-  const space = colorSpacesById.get(id);
+    const space = colorSpacesById.get(id);
 
-  if (space === undefined) {
-    throw new RandomArtError(`Unknown color space: ${id}`);
-  }
+    if (space === undefined) {
+        throw new RandomArtError(`Unknown color space: ${id}`);
+    }
 
-  return space;
+    return space;
 }
 
 export function isColorSpaceId(value: unknown): value is ColorSpaceId {
-  return typeof value === "string" && colorSpacesById.has(value);
+    return typeof value === 'string' && colorSpacesById.has(value);
 }
 
 /** Color space ids in registry order: every iteration over the catalogue must use it. */
@@ -136,62 +136,66 @@ export const COLOR_SPACE_IDS: readonly ColorSpaceId[] = COLOR_SPACES.map((space)
 
 /** Identifier of the entry point the compiled `main` ends with, e.g. `ra_oklch`. */
 export function colorSpaceFunction(id: ColorSpaceId): string {
-  return `ra_${id}`;
+    return `ra_${id}`;
 }
 
 function clamp(v: number, min = 0, max = 1): number {
-  return Math.max(min, Math.min(max, v));
+    return Math.max(min, Math.min(max, v));
 }
 
 /** SRGB gamma encoding of a linear value. */
 function encodeSrgb(linear: number): number {
-  return linear <= 0.0031308 ? linear * 12.92 : 1.055 * Math.max(linear, 0) ** (1 / 2.4) - 0.055;
+    return linear <= 0.0031308 ? linear * 12.92 : 1.055 * Math.max(linear, 0) ** (1 / 2.4) - 0.055;
 }
 
 function oklabToLinear(L: number, a: number, b: number): [number, number, number] {
-  const l_ = L + 0.3963377774 * a + 0.2158037573 * b;
-  const m_ = L - 0.1055613458 * a - 0.0638541728 * b;
-  const s_ = L - 0.0894841775 * a - 1.291485548 * b;
-  const l = l_ * l_ * l_;
-  const m = m_ * m_ * m_;
-  const s = s_ * s_ * s_;
-  return [
-    +4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
-    -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
-    -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s,
-  ];
+    const l_ = L + 0.3963377774 * a + 0.2158037573 * b;
+    const m_ = L - 0.1055613458 * a - 0.0638541728 * b;
+    const s_ = L - 0.0894841775 * a - 1.291485548 * b;
+    const l = l_ * l_ * l_;
+    const m = m_ * m_ * m_;
+    const s = s_ * s_ * s_;
+    return [
+        +4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
+        -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
+        -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s,
+    ];
 }
 
 function inGamut([r, g, b]: readonly [number, number, number]): boolean {
-  return r >= 0 && r <= 1 && g >= 0 && g <= 1 && b >= 0 && b <= 1;
+    return r >= 0 && r <= 1 && g >= 0 && g <= 1 && b >= 0 && b <= 1;
 }
 
 function oklabToSrgb(L: number, a: number, b: number): [number, number, number] {
-  let linear = oklabToLinear(L, a, b);
-  if (!inGamut(linear)) {
-    // Mirror the GLSL gamut mapping: keep L and hue, scale chroma down until in gamut.
-    let scaleLo = 0;
-    let scaleHi = 1;
-    for (let i = 0; i < GAMUT_MAPPING_STEPS; i++) {
-      const mid = 0.5 * (scaleLo + scaleHi);
-      if (inGamut(oklabToLinear(L, a * mid, b * mid))) {
-        scaleLo = mid;
-      } else {
-        scaleHi = mid;
-      }
+    let linear = oklabToLinear(L, a, b);
+    if (!inGamut(linear)) {
+        // Mirror the GLSL gamut mapping: keep L and hue, scale chroma down until in gamut.
+        let scaleLo = 0;
+        let scaleHi = 1;
+        for (let i = 0; i < GAMUT_MAPPING_STEPS; i++) {
+            const mid = 0.5 * (scaleLo + scaleHi);
+            if (inGamut(oklabToLinear(L, a * mid, b * mid))) {
+                scaleLo = mid;
+            } else {
+                scaleHi = mid;
+            }
+        }
+        linear = oklabToLinear(L, a * scaleLo, b * scaleLo);
     }
-    linear = oklabToLinear(L, a * scaleLo, b * scaleLo);
-  }
-  return [clamp(encodeSrgb(linear[0])), clamp(encodeSrgb(linear[1])), clamp(encodeSrgb(linear[2]))];
+    return [
+        clamp(encodeSrgb(linear[0])),
+        clamp(encodeSrgb(linear[1])),
+        clamp(encodeSrgb(linear[2])),
+    ];
 }
 
 function hslToRgb(h: number, s: number, l: number): [number, number, number] {
-  const chroma = 1 - Math.abs(2 * l - 1);
-  const channel = (offset: number): number => {
-    const k = Math.max(0, Math.min(1, Math.abs(((h * 6 + offset) % 6) - 3) - 1));
-    return l + s * (k - 0.5) * chroma;
-  };
-  return [channel(0), channel(4), channel(2)];
+    const chroma = 1 - Math.abs(2 * l - 1);
+    const channel = (offset: number): number => {
+        const k = Math.max(0, Math.min(1, Math.abs(((h * 6 + offset) % 6) - 3) - 1));
+        return l + s * (k - 0.5) * chroma;
+    };
+    return [channel(0), channel(4), channel(2)];
 }
 
 /**
@@ -199,34 +203,34 @@ function hslToRgb(h: number, s: number, l: number): [number, number, number] {
  * implementations in `getColorSpace(id).source`.
  */
 export function toSrgb(
-  id: ColorSpaceId,
-  raw: readonly [number, number, number],
+    id: ColorSpaceId,
+    raw: readonly [number, number, number],
 ): [number, number, number] {
-  const [rx, ry, rz] = raw;
+    const [rx, ry, rz] = raw;
 
-  switch (id) {
-    case "srgb": {
-      const r = clamp(rx * 0.5 + 0.5);
-      const g = clamp(ry * 0.5 + 0.5);
-      const b = clamp(rz * 0.5 + 0.5);
-      return [r, g, b];
+    switch (id) {
+        case 'srgb': {
+            const r = clamp(rx * 0.5 + 0.5);
+            const g = clamp(ry * 0.5 + 0.5);
+            const b = clamp(rz * 0.5 + 0.5);
+            return [r, g, b];
+        }
+        case 'oklch': {
+            const L = clamp(rx * 0.5 + 0.5, 0, 1);
+            const C = Math.abs(ry) * 0.4;
+            const h = (rz * 0.5 + 0.5) * 2 * Math.PI;
+            return oklabToSrgb(L, C * Math.cos(h), C * Math.sin(h));
+        }
+        case 'oklab': {
+            const L = clamp(rx * 0.5 + 0.5, 0, 1);
+            return oklabToSrgb(L, ry * 0.4, rz * 0.4);
+        }
+        case 'hsl': {
+            const h = rx * 0.5 + 0.5;
+            const s = Math.abs(ry);
+            const l = clamp(rz * 0.5 + 0.5, 0, 1);
+            const [r, g, b] = hslToRgb(h, s, l);
+            return [clamp(r), clamp(g), clamp(b)];
+        }
     }
-    case "oklch": {
-      const L = clamp(rx * 0.5 + 0.5, 0, 1);
-      const C = Math.abs(ry) * 0.4;
-      const h = (rz * 0.5 + 0.5) * 2 * Math.PI;
-      return oklabToSrgb(L, C * Math.cos(h), C * Math.sin(h));
-    }
-    case "oklab": {
-      const L = clamp(rx * 0.5 + 0.5, 0, 1);
-      return oklabToSrgb(L, ry * 0.4, rz * 0.4);
-    }
-    case "hsl": {
-      const h = rx * 0.5 + 0.5;
-      const s = Math.abs(ry);
-      const l = clamp(rz * 0.5 + 0.5, 0, 1);
-      const [r, g, b] = hslToRgb(h, s, l);
-      return [clamp(r), clamp(g), clamp(b)];
-    }
-  }
 }

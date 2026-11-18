@@ -320,16 +320,16 @@ Mixing the levels forces the reader to keep switching between intent and mechani
 
 ```ts
 function renderFrame(ctx: CanvasRenderingContext2D, simulation: Simulation) {
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-  for (const body of simulation.bodies) {
-    ctx.beginPath();
-    ctx.arc(body.x, body.y, body.radius, 0, Math.PI * 2);
-    ctx.fillStyle = body.color;
-    ctx.fill();
-  }
+    for (const body of simulation.bodies) {
+        ctx.beginPath();
+        ctx.arc(body.x, body.y, body.radius, 0, Math.PI * 2);
+        ctx.fillStyle = body.color;
+        ctx.fill();
+    }
 
-  updateStatsPanel(simulation);
+    updateStatsPanel(simulation);
 }
 ```
 
@@ -337,15 +337,15 @@ function renderFrame(ctx: CanvasRenderingContext2D, simulation: Simulation) {
 
 ```ts
 function renderFrame(ctx: CanvasRenderingContext2D, simulation: Simulation) {
-  clearSurface(ctx);
-  drawBodies(ctx, simulation.bodies);
-  updateStatsPanel(simulation);
+    clearSurface(ctx);
+    drawBodies(ctx, simulation.bodies);
+    updateStatsPanel(simulation);
 }
 
 function drawBodies(ctx: CanvasRenderingContext2D, bodies: Iterable<Body>) {
-  for (const body of bodies) {
-    drawDisc(ctx, body);
-  }
+    for (const body of bodies) {
+        drawDisc(ctx, body);
+    }
 }
 ```
 
@@ -522,18 +522,18 @@ The serializer imports `*Data` from `./types` and exports only `serializeX`, `de
 ### 2.7.4 Import patterns
 
 - **No barrel exports (`index.ts`)** for cross-module imports. Import from the source file:
-  ```ts
-  import { PAGE_IDS } from "../document/constants";
-  import { createDocument } from "../document/document";
-  import type { Document } from "../document/types";
-  ```
+    ```ts
+    import { PAGE_IDS } from '../document/constants';
+    import { createDocument } from '../document/document';
+    import type { Document } from '../document/types';
+    ```
 - **Within the same domain**, relative imports from the actual file are fine. An `index.ts` may re-export for internal convenience but is not required.
 - **Kernel modules** (`config`, `shared`, `utils`) are imported directly:
-  ```ts
-  import { CONFIG } from "../config/config";
-  import type { ColorSpaceId } from "../config/types";
-  import { assertFinite } from "../shared/guards";
-  ```
+    ```ts
+    import { CONFIG } from '../config/config';
+    import type { ColorSpaceId } from '../config/types';
+    import { assertFinite } from '../shared/guards';
+    ```
 - **Do not create `types.ts` barrels** that re-export from other domains' `types.ts`. Each domain owns its types.
 
 ### 2.7.5 Naming: registries vs constants
@@ -560,8 +560,8 @@ export type DependencyId = keyof typeof dependencies;    // ✅ inferred from re
 Consumers import directly from the source:
 
 ```ts
-import type { DependencyId } from "../dependencies/constants";
-import type { PluginId } from "../plugins/registry";
+import type { DependencyId } from '../dependencies/constants';
+import type { PluginId } from '../plugins/registry';
 ```
 
 `types.ts` does **not** re-export these — it only owns domain types that don't depend on runtime values.

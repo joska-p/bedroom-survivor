@@ -1,19 +1,19 @@
 export interface Budget {
-  maxTerms: number;
+    maxTerms: number;
 }
 
 export interface Signal {
-  next(): IteratorResult<number>;
+    next(): IteratorResult<number>;
 
-  take(count: number): number[];
+    take(count: number): number[];
 
-  readonly produced: number;
+    readonly produced: number;
 }
 
 export interface Module {
-  readonly id: string;
-  readonly name: string;
-  readonly description: string;
+    readonly id: string;
+    readonly name: string;
+    readonly description: string;
 
-  createSignal(budget: Budget): Signal;
+    createSignal(budget: Budget): Signal;
 }

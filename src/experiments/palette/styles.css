@@ -2,25 +2,25 @@
 
 .pg-palette__base,
 .pg-palette__result {
-  margin-top: var(--pg-space-6);
+    margin-top: var(--pg-space-6);
 }
 
 .pg-palette__base {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--pg-space-3);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--pg-space-3);
 }
 
 .pg-swatches {
-  --pg-grid-min: var(--pg-layout-swatch-min-width);
+    --pg-grid-min: var(--pg-layout-swatch-min-width);
 }
 
 .pg-palette__color-value {
-  overflow-wrap: anywhere;
+    overflow-wrap: anywhere;
 }
 
 .pg-palette__swatch--base {
-  width: calc(var(--pg-layout-color-swatch-width) * 1.5);
+    width: calc(var(--pg-layout-color-swatch-width) * 1.5);
 }

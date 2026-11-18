@@ -12,11 +12,11 @@ Pour deux tableaux parallèles, parcourir l'un avec `entries()` et traiter expli
 
 ```ts
 for (const [i, user] of users.entries()) {
-  const score = scores[i];
+    const score = scores[i];
 
-  if (score === undefined) continue;
+    if (score === undefined) continue;
 
-  process(user, score);
+    process(user, score);
 }
 ```
 
@@ -34,9 +34,9 @@ Attention : `Record<string, T>` ne garantit pas que toutes les clés possibles e
 ### 3. Valeur par défaut, quand un fallback est légitime
 
 ```ts
-const home = env["HOME"] ?? "/tmp";
+const home = env['HOME'] ?? '/tmp';
 const first = users.at(0) ?? fallbackUser;
-const [first = "anonymous"] = users;
+const [first = 'anonymous'] = users;
 ```
 
 Ne l'utiliser que si le fallback a un sens métier.
@@ -53,7 +53,7 @@ Extraire l'élément dans une variable locale, puis vérifier cette variable (ne
 const first = xs[0];
 
 if (first === undefined) {
-  throw new Error("Liste vide");
+    throw new Error('Liste vide');
 }
 
 return first; // T
@@ -69,14 +69,14 @@ Pour une collection finie et connue à l'avance (expériences, routes, plugins, 
 
 ```ts
 interface Experiment<TId extends string = string> {
-  readonly id: TId;
-  readonly label: string;
+    readonly id: TId;
+    readonly label: string;
 }
 
 export const EXPERIMENTS = [
-  { id: "spirale", label: "Spirale" },
-  { id: "seed", label: "Seed" },
-  { id: "folded-space", label: "Folded space" },
+    { id: 'spirale', label: 'Spirale' },
+    { id: 'seed', label: 'Seed' },
+    { id: 'folded-space', label: 'Folded space' },
 ] as const satisfies readonly Experiment[];
 ```
 
@@ -84,13 +84,13 @@ Dériver les types depuis la source de vérité :
 
 ```ts
 export type ExperimentDefinition = (typeof EXPERIMENTS)[number];
-export type ExperimentKey = ExperimentDefinition["id"];
+export type ExperimentKey = ExperimentDefinition['id'];
 ```
 
 On obtient automatiquement l'union :
 
 ```ts
-type ExperimentKey = "spirale" | "seed" | "folded-space";
+type ExperimentKey = 'spirale' | 'seed' | 'folded-space';
 ```
 
 Construire les options et autres représentations dérivées depuis le registre, plutôt que maintenir plusieurs listes synchronisées :
@@ -103,17 +103,17 @@ export const experimentOptions = EXPERIMENTS.map(({ id, label }) => ({ value: id
 
 ```ts
 const experimentsById = new Map<string, ExperimentDefinition>(
-  EXPERIMENTS.map((experiment) => [experiment.id, experiment]),
+    EXPERIMENTS.map((experiment) => [experiment.id, experiment]),
 );
 
 export function getExperiment(id: string | undefined): ExperimentDefinition {
-  const experiment = experimentsById.get(id ?? "");
+    const experiment = experimentsById.get(id ?? '');
 
-  if (experiment === undefined) {
-    return EXPERIMENTS[0];
-  }
+    if (experiment === undefined) {
+        return EXPERIMENTS[0];
+    }
 
-  return experiment;
+    return experiment;
 }
 ```
 

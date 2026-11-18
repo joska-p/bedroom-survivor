@@ -70,21 +70,21 @@ Use Vite-resolved assets co-located with the code instead:
 - Never keep a `baseUrl` / absolute-path fallback alongside it: one pattern only.
 
 ```ts
-const sdfUrlModules = import.meta.glob("../assets/molecules/*.sdf", {
-  query: "?url",
-  import: "default",
+const sdfUrlModules = import.meta.glob('../assets/molecules/*.sdf', {
+    query: '?url',
+    import: 'default',
 }) as Record<string, () => Promise<string>>;
 
 const sdfUrlByFile = new Map<string, () => Promise<string>>(
-  Object.entries(sdfUrlModules).map(([path, loader]) => [path.split("/").pop() ?? path, loader]),
+    Object.entries(sdfUrlModules).map(([path, loader]) => [path.split('/').pop() ?? path, loader]),
 );
 
 export async function loadMolecule(entry: MoleculeEntry): Promise<Molecule> {
-  const loader = sdfUrlByFile.get(entry.file);
-  if (!loader) throw new Error(`unknown asset ${entry.file}`);
-  const res = await fetch(await loader());
-  if (!res.ok) throw new Error(`could not load ${entry.file} (${res.status})`);
-  return parseAndValidate(await res.text(), entry.file);
+    const loader = sdfUrlByFile.get(entry.file);
+    if (!loader) throw new Error(`unknown asset ${entry.file}`);
+    const res = await fetch(await loader());
+    if (!res.ok) throw new Error(`could not load ${entry.file} (${res.status})`);
+    return parseAndValidate(await res.text(), entry.file);
 }
 ```
 

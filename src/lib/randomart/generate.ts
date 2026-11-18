@@ -1,13 +1,13 @@
-import { RandomArtError } from "./errors";
-import { createMinimumSizer, vocabulary, weightOf } from "./grammar";
-import type { Grammar } from "./grammar";
-import { getOp } from "./ops";
-import type { OpName } from "./ops";
-import { createRng } from "./rng";
-import type { Rng } from "./rng";
-import type { Seed } from "./seed";
-import { createExpression, createNode } from "./tree";
-import type { Expression, Node } from "./tree";
+import { RandomArtError } from './errors';
+import { createMinimumSizer, vocabulary, weightOf } from './grammar';
+import type { Grammar } from './grammar';
+import { getOp } from './ops';
+import type { OpName } from './ops';
+import { createRng } from './rng';
+import type { Rng } from './rng';
+import type { Seed } from './seed';
+import { createExpression, createNode } from './tree';
+import type { Expression, Node } from './tree';
 
 /**
  * Bumped whenever a change to generation would make an existing `(grammar, seed)` produce a
@@ -27,35 +27,35 @@ const PARAM_SCALE = 10 ** PARAM_DECIMALS;
 const LOGIC_MIN_DEPTH = 2;
 
 interface SizedNode {
-  readonly node: Node;
-  readonly size: number;
+    readonly node: Node;
+    readonly size: number;
 }
 
 interface Trunk {
-  readonly nodes: readonly [Node, Node, Node];
-  readonly size: number;
+    readonly nodes: readonly [Node, Node, Node];
+    readonly size: number;
 }
 
 interface GenState {
-  readonly grammar: Grammar;
-  readonly vocabulary: readonly OpName[];
-  readonly rng: Rng;
-  readonly minDepth: number;
-  readonly maxDepth: number;
-  readonly minimumSize: (depth: number) => number;
+    readonly grammar: Grammar;
+    readonly vocabulary: readonly OpName[];
+    readonly rng: Rng;
+    readonly minDepth: number;
+    readonly maxDepth: number;
+    readonly minimumSize: (depth: number) => number;
 }
 
 function roundToPrecision(value: number): number {
-  const rounded = Math.round(value * PARAM_SCALE) / PARAM_SCALE;
-  return rounded === 0 ? 0 : rounded;
+    const rounded = Math.round(value * PARAM_SCALE) / PARAM_SCALE;
+    return rounded === 0 ? 0 : rounded;
 }
 
 function clampToRange(value: number, min: number, max: number): number {
-  return Math.min(max, Math.max(min, value));
+    return Math.min(max, Math.max(min, value));
 }
 
 function drawContinuous(rng: Rng, min: number, max: number): number {
-  return clampToRange(roundToPrecision(min + rng.next() * (max - min)), min, max);
+    return clampToRange(roundToPrecision(min + rng.next() * (max - min)), min, max);
 }
 
 /**
@@ -66,132 +66,132 @@ function drawContinuous(rng: Rng, min: number, max: number): number {
  * just below the next integer (`(0.3 - 0.1) / 0.1 < 2`).
  */
 export function drawStepped(rng: Rng, min: number, max: number, step: number): number {
-  const levelCount = Math.floor((max - min) / step + 1e-9) + 1;
-  if (levelCount <= 1) {
-    return min;
-  }
-  return clampToRange(roundToPrecision(min + rng.int(levelCount) * step), min, max);
+    const levelCount = Math.floor((max - min) / step + 1e-9) + 1;
+    if (levelCount <= 1) {
+        return min;
+    }
+    return clampToRange(roundToPrecision(min + rng.int(levelCount) * step), min, max);
 }
 
 function drawParams(state: GenState, name: OpName): Record<string, number> {
-  const spec = getOp(name).params;
-  const params: Record<string, number> = {};
-  if (spec === undefined) {
+    const spec = getOp(name).params;
+    const params: Record<string, number> = {};
+    if (spec === undefined) {
+        return params;
+    }
+    for (const [paramName, range] of Object.entries(spec)) {
+        params[paramName] =
+            range.step === undefined
+                ? drawContinuous(state.rng, range.min, range.max)
+                : drawStepped(state.rng, range.min, range.max, range.step);
+    }
     return params;
-  }
-  for (const [paramName, range] of Object.entries(spec)) {
-    params[paramName] =
-      range.step === undefined
-        ? drawContinuous(state.rng, range.min, range.max)
-        : drawStepped(state.rng, range.min, range.max, range.step);
-  }
-  return params;
 }
 
 function drawOperator(state: GenState, depth: number, budget: number): OpName {
-  const candidates: OpName[] = [];
-  for (const name of state.vocabulary) {
-    const { arity } = getOp(name);
-    if (arity === 0) {
-      if (depth >= state.minDepth) {
-        candidates.push(name);
-      }
-      continue;
+    const candidates: OpName[] = [];
+    for (const name of state.vocabulary) {
+        const { arity } = getOp(name);
+        if (arity === 0) {
+            if (depth >= state.minDepth) {
+                candidates.push(name);
+            }
+            continue;
+        }
+        const needed = 1 + arity * state.minimumSize(depth + 1);
+        if (depth < state.maxDepth && needed <= budget) {
+            candidates.push(name);
+        }
     }
-    const needed = 1 + arity * state.minimumSize(depth + 1);
-    if (depth < state.maxDepth && needed <= budget) {
-      candidates.push(name);
+
+    if (candidates.length === 0) {
+        throw new RandomArtError(`No operator available at depth ${depth} within budget ${budget}`);
     }
-  }
 
-  if (candidates.length === 0) {
-    throw new RandomArtError(`No operator available at depth ${depth} within budget ${budget}`);
-  }
+    // Keep channel roots continuous: a logic operator at the root (`gt`) forces a binary channel.
+    // Above `LOGIC_MIN_DEPTH` we simply drop logic; the fallback keeps degenerate grammars
+    // feasible rather than throwing.
+    const allowed =
+        depth < LOGIC_MIN_DEPTH
+            ? candidates.filter((name) => getOp(name).family !== 'logic')
+            : candidates;
+    const pool = allowed.length > 0 ? allowed : candidates;
 
-  // Keep channel roots continuous: a logic operator at the root (`gt`) forces a binary channel.
-  // Above `LOGIC_MIN_DEPTH` we simply drop logic; the fallback keeps degenerate grammars
-  // feasible rather than throwing.
-  const allowed =
-    depth < LOGIC_MIN_DEPTH
-      ? candidates.filter((name) => getOp(name).family !== "logic")
-      : candidates;
-  const pool = allowed.length > 0 ? allowed : candidates;
-
-  return state.rng.weighted(pool, (name) => weightOf(state.grammar, name));
+    return state.rng.weighted(pool, (name) => weightOf(state.grammar, name));
 }
 
 function buildChildren<T extends { readonly size: number }>(
-  state: GenState,
-  depth: number,
-  budget: number,
-  arity: number,
-  build: (budget: number) => T,
+    state: GenState,
+    depth: number,
+    budget: number,
+    arity: number,
+    build: (budget: number) => T,
 ): T[] {
-  const minimum = state.minimumSize(depth + 1);
-  let remaining = budget - 1 - arity * minimum;
-  const children: T[] = [];
-  for (let index = 0; index < arity; index++) {
-    const share = Math.floor(remaining / Math.max(1, arity - index));
-    const child = build(minimum + share);
-    children.push(child);
-    remaining -= child.size - minimum;
-  }
-  return children;
+    const minimum = state.minimumSize(depth + 1);
+    let remaining = budget - 1 - arity * minimum;
+    const children: T[] = [];
+    for (let index = 0; index < arity; index++) {
+        const share = Math.floor(remaining / Math.max(1, arity - index));
+        const child = build(minimum + share);
+        children.push(child);
+        remaining -= child.size - minimum;
+    }
+    return children;
 }
 
 function generateNode(state: GenState, depth: number, budget: number): SizedNode {
-  const name = drawOperator(state, depth, budget);
-  const params = drawParams(state, name);
-  const { arity } = getOp(name);
-  const children =
-    arity === 0
-      ? []
-      : buildChildren(state, depth, budget, arity, (childBudget) =>
-          generateNode(state, depth + 1, childBudget),
-        );
+    const name = drawOperator(state, depth, budget);
+    const params = drawParams(state, name);
+    const { arity } = getOp(name);
+    const children =
+        arity === 0
+            ? []
+            : buildChildren(state, depth, budget, arity, (childBudget) =>
+                  generateNode(state, depth + 1, childBudget),
+              );
 
-  return {
-    node: createNode(
-      name,
-      children.map((child) => child.node),
-      params,
-    ),
-    size: 1 + children.reduce((total, child) => total + child.size, 0),
-  };
+    return {
+        node: createNode(
+            name,
+            children.map((child) => child.node),
+            params,
+        ),
+        size: 1 + children.reduce((total, child) => total + child.size, 0),
+    };
 }
 
 function generateTrunk(state: GenState, depth: number, budget: number): Trunk {
-  if (depth > state.grammar.shareDepth) {
-    const r = generateNode(state, depth, budget);
-    const g = generateNode(state, depth, budget);
-    const b = generateNode(state, depth, budget);
-    return {
-      nodes: [r.node, g.node, b.node],
-      size: Math.max(r.size, g.size, b.size),
-    };
-  }
+    if (depth > state.grammar.shareDepth) {
+        const r = generateNode(state, depth, budget);
+        const g = generateNode(state, depth, budget);
+        const b = generateNode(state, depth, budget);
+        return {
+            nodes: [r.node, g.node, b.node],
+            size: Math.max(r.size, g.size, b.size),
+        };
+    }
 
-  const name = drawOperator(state, depth, budget);
-  const params = drawParams(state, name);
-  const { arity } = getOp(name);
-  const children =
-    arity === 0
-      ? []
-      : buildChildren(state, depth, budget, arity, (childBudget) =>
-          generateTrunk(state, depth + 1, childBudget),
+    const name = drawOperator(state, depth, budget);
+    const params = drawParams(state, name);
+    const { arity } = getOp(name);
+    const children =
+        arity === 0
+            ? []
+            : buildChildren(state, depth, budget, arity, (childBudget) =>
+                  generateTrunk(state, depth + 1, childBudget),
+              );
+
+    const channel = (index: 0 | 1 | 2): Node =>
+        createNode(
+            name,
+            children.map((child) => child.nodes[index]),
+            params,
         );
 
-  const channel = (index: 0 | 1 | 2): Node =>
-    createNode(
-      name,
-      children.map((child) => child.nodes[index]),
-      params,
-    );
-
-  return {
-    nodes: [channel(0), channel(1), channel(2)],
-    size: 1 + children.reduce((total, child) => total + child.size, 0),
-  };
+    return {
+        nodes: [channel(0), channel(1), channel(2)],
+        size: 1 + children.reduce((total, child) => total + child.size, 0),
+    };
 }
 
 /**
@@ -199,16 +199,16 @@ function generateTrunk(state: GenState, depth: number, budget: number): Trunk {
  * down to `shareDepth` the channels pick the same operator, below it they diverge.
  */
 export function generate(grammar: Grammar, seed: Seed): Expression {
-  const vocab = vocabulary(grammar);
-  const state: GenState = {
-    grammar,
-    vocabulary: vocab,
-    rng: createRng(seed),
-    minDepth: grammar.minDepth,
-    maxDepth: grammar.maxDepth,
-    minimumSize: createMinimumSizer(vocab, grammar.minDepth),
-  };
+    const vocab = vocabulary(grammar);
+    const state: GenState = {
+        grammar,
+        vocabulary: vocab,
+        rng: createRng(seed),
+        minDepth: grammar.minDepth,
+        maxDepth: grammar.maxDepth,
+        minimumSize: createMinimumSizer(vocab, grammar.minDepth),
+    };
 
-  const trunk = generateTrunk(state, 1, grammar.maxNodes);
-  return createExpression(trunk.nodes[0], trunk.nodes[1], trunk.nodes[2]);
+    const trunk = generateTrunk(state, 1, grammar.maxNodes);
+    return createExpression(trunk.nodes[0], trunk.nodes[1], trunk.nodes[2]);
 }

@@ -12,4 +12,4 @@ export const TRAIL_STRENGTH = 0.6;
 
 export const MAX_STATE_COUNT = 8;
 
-export const DEFAULT_STATE_COLORS: CssColor[] = ["#070a14", "#d97706"];
+export const DEFAULT_STATE_COLORS: CssColor[] = ['#070a14', '#d97706'];

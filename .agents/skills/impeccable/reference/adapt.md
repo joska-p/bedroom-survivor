@@ -11,22 +11,22 @@ Adapt an existing design to a different context: another screen size, device, pl
 Understand what needs adaptation and why:
 
 1. **Identify the source context**:
-   - What was it designed for originally? (Desktop web? Mobile app?)
-   - What assumptions were made? (Large screen? Mouse input? Fast connection?)
-   - What works well in current context?
+    - What was it designed for originally? (Desktop web? Mobile app?)
+    - What assumptions were made? (Large screen? Mouse input? Fast connection?)
+    - What works well in current context?
 
 2. **Understand target context**:
-   - **Device**: Mobile, tablet, desktop, TV, watch, print?
-   - **Input method**: Touch, mouse, keyboard, voice, gamepad?
-   - **Screen constraints**: Size, resolution, orientation?
-   - **Connection**: Fast wifi, slow 3G, offline?
-   - **Usage context**: On-the-go vs desk, quick glance vs focused reading?
-   - **User expectations**: What do users expect on this platform?
+    - **Device**: Mobile, tablet, desktop, TV, watch, print?
+    - **Input method**: Touch, mouse, keyboard, voice, gamepad?
+    - **Screen constraints**: Size, resolution, orientation?
+    - **Connection**: Fast wifi, slow 3G, offline?
+    - **Usage context**: On-the-go vs desk, quick glance vs focused reading?
+    - **User expectations**: What do users expect on this platform?
 
 3. **Identify adaptation challenges**:
-   - What won't fit? (Content, navigation, features)
-   - What won't work? (Hover states on touch, tiny touch targets)
-   - What's inappropriate? (Desktop patterns on mobile, mobile patterns on desktop)
+    - What won't fit? (Content, navigation, features)
+    - What won't work? (Hover states on touch, tiny touch targets)
+    - What's inappropriate? (Desktop patterns on mobile, mobile patterns on desktop)
 
 Adaptation is rethinking the experience for the new context, not scaling pixels.
 
@@ -234,30 +234,30 @@ Don't chase device sizes; let content tell you where to break. Start narrow, str
 ```css
 /* Fine pointer (mouse, trackpad) */
 @media (pointer: fine) {
-  .button {
-    padding: 8px 16px;
-  }
+    .button {
+        padding: 8px 16px;
+    }
 }
 
 /* Coarse pointer (touch, stylus) */
 @media (pointer: coarse) {
-  .button {
-    padding: 12px 20px;
-  } /* Larger touch target */
+    .button {
+        padding: 12px 20px;
+    } /* Larger touch target */
 }
 
 /* Device supports hover */
 @media (hover: hover) {
-  .card:hover {
-    transform: translateY(-2px);
-  }
+    .card:hover {
+        transform: translateY(-2px);
+    }
 }
 
 /* Device doesn't support hover (touch) */
 @media (hover: none) {
-  .card {
-    /* No hover state - use active instead */
-  }
+    .card {
+        /* No hover state - use active instead */
+    }
 }
 ```
 
@@ -269,15 +269,15 @@ Modern phones have notches, rounded corners, and home indicators. Use `env()`:
 
 ```css
 body {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 /* With fallback */
 .footer {
-  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
 }
 ```
 
@@ -293,10 +293,10 @@ body {
 
 ```html
 <img
-  src="hero-800.jpg"
-  srcset="hero-400.jpg 400w, hero-800.jpg 800w, hero-1200.jpg 1200w"
-  sizes="(max-width: 768px) 100vw, 50vw"
-  alt="Hero image"
+    src="hero-800.jpg"
+    srcset="hero-400.jpg 400w, hero-800.jpg 800w, hero-1200.jpg 1200w"
+    sizes="(max-width: 768px) 100vw, 50vw"
+    alt="Hero image"
 />
 ```
 
@@ -312,9 +312,9 @@ When you need different crops/compositions (not just resolutions):
 
 ```html
 <picture>
-  <source media="(min-width: 768px)" srcset="wide.jpg" />
-  <source media="(max-width: 767px)" srcset="tall.jpg" />
-  <img src="fallback.jpg" alt="..." />
+    <source media="(min-width: 768px)" srcset="wide.jpg" />
+    <source media="(max-width: 767px)" srcset="tall.jpg" />
+    <img src="fallback.jpg" alt="..." />
 </picture>
 ```
 

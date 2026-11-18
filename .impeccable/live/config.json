@@ -1,7 +1,7 @@
 {
-  "files": ["src/**/*.html"],
-  "exclude": ["src/templates/**"],
-  "insertBefore": "</body>",
-  "commentSyntax": "html",
-  "cspChecked": true
+    "files": ["src/**/*.html"],
+    "exclude": ["src/templates/**"],
+    "insertBefore": "</body>",
+    "commentSyntax": "html",
+    "cspChecked": true
 }

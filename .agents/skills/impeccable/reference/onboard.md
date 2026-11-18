@@ -7,21 +7,21 @@ Get users to first value as fast as possible. Onboarding's job is not to teach t
 Understand what users need to learn and why:
 
 1. **Identify the challenge**:
-   - What are users trying to accomplish?
-   - What's confusing or unclear about current experience?
-   - Where do users get stuck or drop off?
-   - What's the "aha moment" we want users to reach?
+    - What are users trying to accomplish?
+    - What's confusing or unclear about current experience?
+    - Where do users get stuck or drop off?
+    - What's the "aha moment" we want users to reach?
 
 2. **Understand the users**:
-   - What's their experience level? (Beginners, power users, mixed?)
-   - What's their motivation? (Excited and exploring? Required by work?)
-   - What's their time commitment? (5 minutes? 30 minutes?)
-   - What alternatives do they know? (Coming from competitor? New to category?)
+    - What's their experience level? (Beginners, power users, mixed?)
+    - What's their motivation? (Excited and exploring? Required by work?)
+    - What's their time commitment? (5 minutes? 30 minutes?)
+    - What alternatives do they know? (Coming from competitor? New to category?)
 
 3. **Define success**:
-   - What's the minimum users need to learn to be successful?
-   - What's the key action we want them to take? (First project? First invite?)
-   - How do we know onboarding worked? (Completion rate? Time to value?)
+    - What's the minimum users need to learn to be successful?
+    - What's the key action we want them to take? (First project? First invite?)
+    - How do we know onboarding worked? (Completion rate? Time to value?)
 
 Onboarding should get users to value as quickly as possible, not teach everything possible.
 
@@ -233,8 +233,8 @@ Illustration or icon (not just text on blank page)
 ```javascript
 // Namespace keys by account id + onboarding version, so a shared browser
 // doesn't let one account's progress hide onboarding for another.
-localStorage.setItem("onboarding-completed:v1:" + userId, "true");
-localStorage.setItem("feature-tooltip-seen-reports:v1:" + userId, "true");
+localStorage.setItem('onboarding-completed:v1:' + userId, 'true');
+localStorage.setItem('feature-tooltip-seen-reports:v1:' + userId, 'true');
 ```
 
 Show onboarding once: track completion and respect dismissals.

@@ -138,18 +138,18 @@ For Svelte/SvelteKit targets, `impeccable live-wrap` returns `previewMode: "svel
 
 ```json
 {
-  "1": [
-    {
-      "id": "density",
-      "kind": "steps",
-      "default": "snug",
-      "label": "Density",
-      "options": [
-        { "value": "airy", "label": "Airy" },
-        { "value": "snug", "label": "Snug" }
-      ]
-    }
-  ]
+    "1": [
+        {
+            "id": "density",
+            "kind": "steps",
+            "default": "snug",
+            "label": "Density",
+            "options": [
+                { "value": "airy", "label": "Airy" },
+                { "value": "snug", "label": "Snug" }
+            ]
+        }
+    ]
 }
 ```
 
@@ -210,16 +210,16 @@ Complete HTML replacement of the original element per variant, not a CSS-only pa
 ```html
 <!-- Variants: insert below this line -->
 <style data-impeccable-css="SESSION_ID">
-  /* rules matching cssAuthoring.rulePattern */
+    /* rules matching cssAuthoring.rulePattern */
 </style>
 <div data-impeccable-variant="1">
-  <!-- variant 1: full element replacement (single top-level element) -->
+    <!-- variant 1: full element replacement (single top-level element) -->
 </div>
 <div data-impeccable-variant="2" style="display: none">
-  <!-- variant 2 -->
+    <!-- variant 2 -->
 </div>
 <div data-impeccable-variant="3" style="display: none">
-  <!-- variant 3 -->
+    <!-- variant 3 -->
 </div>
 ```
 
@@ -257,8 +257,8 @@ Budget scales with the element's VISUAL weight (count visual children, not DOM d
 
 ```html
 <div
-  data-impeccable-variant="1"
-  data-impeccable-params='[
+    data-impeccable-variant="1"
+    data-impeccable-params='[
   {"id":"color-amount","kind":"range","min":0,"max":1,"step":0.05,"default":0.5,"label":"Color amount"},
   {"id":"serif","kind":"toggle","default":false,"label":"Serif display"}
 ]'

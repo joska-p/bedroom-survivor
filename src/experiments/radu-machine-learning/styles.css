@@ -1,185 +1,185 @@
 /* Radu machine learning: gallery, sketchpad and chart additions only. */
 
 .pg-radu__gallery {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-4);
-  min-width: 0;
-  overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pg-space-4);
+    min-width: 0;
+    overflow-x: auto;
 }
 
 .pg-radu__row {
-  align-items: center;
-  gap: var(--pg-space-2);
-  min-width: var(--pg-breakpoint-narrow-max);
+    align-items: center;
+    gap: var(--pg-space-2);
+    min-width: var(--pg-breakpoint-narrow-max);
 }
 
 .pg-radu__student {
-  margin: 0;
-  overflow: hidden;
-  color: inherit;
-  font-size: var(--pg-font-size-sm);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    margin: 0;
+    overflow: hidden;
+    color: inherit;
+    font-size: var(--pg-font-size-sm);
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .pg-radu__card {
-  overflow: hidden;
-  border: var(--pg-border-width-strong) solid transparent;
-  border-radius: var(--pg-radius-md);
-  cursor: pointer;
+    overflow: hidden;
+    border: var(--pg-border-width-strong) solid transparent;
+    border-radius: var(--pg-radius-md);
+    cursor: pointer;
 }
 
 .pg-radu__card:hover {
-  border-color: var(--pg-color-neutral);
+    border-color: var(--pg-color-neutral);
 }
 
 /* Label mapping uses semantic tokens so bright values never persist in dark theme. */
-.pg-radu__card.is-selected[data-label="car"] {
-  border-color: var(--pg-color-error);
+.pg-radu__card.is-selected[data-label='car'] {
+    border-color: var(--pg-color-error);
 }
 
-.pg-radu__card.is-selected[data-label="fish"],
-.pg-radu__card.is-selected[data-label="house"] {
-  border-color: var(--pg-color-aurora);
+.pg-radu__card.is-selected[data-label='fish'],
+.pg-radu__card.is-selected[data-label='house'] {
+    border-color: var(--pg-color-aurora);
 }
 
-.pg-radu__card.is-selected[data-label="tree"] {
-  border-color: var(--pg-color-solder);
+.pg-radu__card.is-selected[data-label='tree'] {
+    border-color: var(--pg-color-solder);
 }
 
-.pg-radu__card.is-selected[data-label="bicycle"] {
-  border-color: var(--pg-color-amber);
+.pg-radu__card.is-selected[data-label='bicycle'] {
+    border-color: var(--pg-color-amber);
 }
 
-.pg-radu__card.is-selected[data-label="guitar"] {
-  border-color: var(--pg-color-purple);
+.pg-radu__card.is-selected[data-label='guitar'] {
+    border-color: var(--pg-color-purple);
 }
 
-.pg-radu__card.is-selected[data-label="pencil"] {
-  border-color: var(--pg-color-aqua);
+.pg-radu__card.is-selected[data-label='pencil'] {
+    border-color: var(--pg-color-aqua);
 }
 
-.pg-radu__card.is-selected[data-label="clock"] {
-  border-color: var(--pg-color-orange);
+.pg-radu__card.is-selected[data-label='clock'] {
+    border-color: var(--pg-color-orange);
 }
 
 .pg-radu__image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 
 .pg-radu__section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--pg-space-2);
 }
 
 .pg-radu__section h3 {
-  margin: 0;
-  font-size: var(--pg-font-size-md);
+    margin: 0;
+    font-size: var(--pg-font-size-md);
 }
 
 .pg-radu__actions {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: end;
-  gap: var(--pg-space-2);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: end;
+    gap: var(--pg-space-2);
 }
 
 .pg-radu__actions button {
-  width: 100%;
-  font-size: var(--pg-font-size-xs);
+    width: 100%;
+    font-size: var(--pg-font-size-xs);
 }
 
 .pg-radu__sketch-viewport {
-  flex: none;
-  min-height: 0;
-  aspect-ratio: 3 / 2;
+    flex: none;
+    min-height: 0;
+    aspect-ratio: 3 / 2;
 }
 
 .pg-radu__sketch-viewport .pg-canvas {
-  min-height: 0;
+    min-height: 0;
 }
 
 .pg-radu__chart {
-  width: 100%;
-  aspect-ratio: 4 / 3;
+    width: 100%;
+    aspect-ratio: 4 / 3;
 }
 
 .pg-radu__chart-svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
 }
 
 .pg-radu__axis {
-  color: var(--pg-text-muted);
+    color: var(--pg-text-muted);
 }
 
 .pg-radu__dot {
-  cursor: pointer;
-  opacity: 0.25;
-  transition:
-    opacity var(--pg-motion-duration-normal) var(--pg-motion-easing-out),
-    r var(--pg-motion-duration-normal) var(--pg-motion-easing-out);
+    cursor: pointer;
+    opacity: 0.25;
+    transition:
+        opacity var(--pg-motion-duration-normal) var(--pg-motion-easing-out),
+        r var(--pg-motion-duration-normal) var(--pg-motion-easing-out);
 }
 
 .pg-radu__dot:hover,
 .pg-radu__dot.is-selected {
-  opacity: 1;
-  r: var(--pg-space-2);
+    opacity: 1;
+    r: var(--pg-space-2);
 }
 
 .pg-radu__tooltip-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-1);
-  padding: var(--pg-space-2);
-  border-radius: var(--pg-radius-sm);
-  background-color: var(--pg-surface-tooltip);
-  color: var(--pg-on-tooltip);
-  font-family: var(--pg-font-sans);
-  font-size: var(--pg-font-size-xs);
-  text-transform: capitalize;
-  white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pg-space-1);
+    padding: var(--pg-space-2);
+    border-radius: var(--pg-radius-sm);
+    background-color: var(--pg-surface-tooltip);
+    color: var(--pg-on-tooltip);
+    font-family: var(--pg-font-sans);
+    font-size: var(--pg-font-size-xs);
+    text-transform: capitalize;
+    white-space: nowrap;
 }
 
 .pg-radu__prediction {
-  margin: 0;
-  font-size: var(--pg-font-size-lg);
-  font-weight: var(--pg-font-weight-semibold);
-  text-transform: capitalize;
+    margin: 0;
+    font-size: var(--pg-font-size-lg);
+    font-weight: var(--pg-font-weight-semibold);
+    text-transform: capitalize;
 }
 
 .pg-radu__neighbours {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--pg-space-2);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--pg-space-2);
 }
 
 .pg-radu__neighbour {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-1);
-  padding: var(--pg-space-1);
-  min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pg-space-1);
+    padding: var(--pg-space-1);
+    min-width: 0;
 }
 
 .pg-radu__neighbour-image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 
 .pg-radu__neighbour-caption {
-  overflow: hidden;
-  font-family: var(--pg-font-mono);
-  font-size: var(--pg-font-size-xs);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    font-family: var(--pg-font-mono);
+    font-size: var(--pg-font-size-xs);
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

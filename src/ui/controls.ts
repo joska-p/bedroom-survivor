@@ -5,80 +5,80 @@
  */
 
 export interface SelectOption {
-  value: string;
-  label: string;
+    value: string;
+    label: string;
 }
 
 export function createSelect(
-  mount: HTMLElement,
-  options: readonly SelectOption[],
-  value: string,
+    mount: HTMLElement,
+    options: readonly SelectOption[],
+    value: string,
 ): HTMLSelectElement {
-  const select = document.createElement("select");
+    const select = document.createElement('select');
 
-  for (const option of options) {
-    const element = document.createElement("option");
+    for (const option of options) {
+        const element = document.createElement('option');
 
-    element.value = option.value;
-    element.textContent = option.label;
-    select.append(element);
-  }
+        element.value = option.value;
+        element.textContent = option.label;
+        select.append(element);
+    }
 
-  select.value = value;
-  mount.append(select);
+    select.value = value;
+    mount.append(select);
 
-  return select;
+    return select;
 }
 
 export interface SliderOptions {
-  min: number;
-  max: number;
-  step: number;
-  value: number;
+    min: number;
+    max: number;
+    step: number;
+    value: number;
 }
 
 export function createSlider(mount: HTMLElement, options: SliderOptions): HTMLInputElement {
-  const slider = document.createElement("input");
+    const slider = document.createElement('input');
 
-  slider.type = "range";
-  slider.min = String(options.min);
-  slider.max = String(options.max);
-  slider.step = String(options.step);
-  slider.value = String(options.value);
-  mount.append(slider);
+    slider.type = 'range';
+    slider.min = String(options.min);
+    slider.max = String(options.max);
+    slider.step = String(options.step);
+    slider.value = String(options.value);
+    mount.append(slider);
 
-  return slider;
+    return slider;
 }
 
 export function createToggle(mount: HTMLElement, checked: boolean): HTMLInputElement {
-  const toggle = document.createElement("input");
+    const toggle = document.createElement('input');
 
-  toggle.type = "checkbox";
-  toggle.checked = checked;
-  mount.append(toggle);
+    toggle.type = 'checkbox';
+    toggle.checked = checked;
+    mount.append(toggle);
 
-  return toggle;
+    return toggle;
 }
 
 export function createTextInput(mount: HTMLElement, value: string): HTMLInputElement {
-  const input = document.createElement("input");
+    const input = document.createElement('input');
 
-  input.type = "text";
-  input.autocomplete = "off";
-  input.spellcheck = false;
-  input.value = value;
-  mount.append(input);
+    input.type = 'text';
+    input.autocomplete = 'off';
+    input.spellcheck = false;
+    input.value = value;
+    mount.append(input);
 
-  return input;
+    return input;
 }
 
 export function createTextArea(mount: HTMLElement, value: string): HTMLTextAreaElement {
-  const area = document.createElement("textarea");
+    const area = document.createElement('textarea');
 
-  area.rows = 2;
-  area.spellcheck = false;
-  area.value = value;
-  mount.append(area);
+    area.rows = 2;
+    area.spellcheck = false;
+    area.value = value;
+    mount.append(area);
 
-  return area;
+    return area;
 }

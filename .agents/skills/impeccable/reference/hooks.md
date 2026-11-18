@@ -47,9 +47,9 @@ The first argument is the action. Defaults to `status`.
 1. Resolve the action from the user's argument. If no action was given, default to `status`.
 2. Invoke the admin script and pass the user's output through verbatim:
 
-   ```bash
-   .github/skills/impeccable/scripts/impeccable hooks <action> [args...]
-   ```
+    ```bash
+    .github/skills/impeccable/scripts/impeccable hooks <action> [args...]
+    ```
 
 3. If `<action>` is `off`, follow up with a one-line note: "Done. New edits will not trigger the design hook in this project until you run `/impeccable hooks on`."
 4. If `<action>` is `on`, report what the command installed or repaired. If no installed skill folders were found or settings were skipped, surface that result and do not claim the hook will run. Otherwise note that the harness must load the updated settings (and satisfy any trust requirements) before it runs. On Hermes Agent, `on` cannot install or enable the plugin: if `impeccable context` reported `MANUAL_DETECTOR_REQUIRED`, tell the user to run `npx impeccable install` and then `hermes plugins enable impeccable-design-hook` instead.

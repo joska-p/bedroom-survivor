@@ -1,34 +1,34 @@
 /* Fracture page: only readout and mono-input styling; shared chrome lives in ui/styles/. */
 
 .pg-fracture__section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pg-space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--pg-space-2);
 }
 
 .pg-fracture__readouts {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: var(--pg-space-1) var(--pg-space-3);
-  margin: 0;
-  font-family: var(--pg-font-mono);
-  font-size: var(--pg-font-size-sm);
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--pg-space-1) var(--pg-space-3);
+    margin: 0;
+    font-family: var(--pg-font-mono);
+    font-size: var(--pg-font-size-sm);
 }
 
 .pg-fracture__readouts dt {
-  color: var(--pg-text-muted);
+    color: var(--pg-text-muted);
 }
 
 .pg-fracture__readouts dd {
-  margin: 0;
-  overflow-wrap: anywhere;
-  text-align: right;
+    margin: 0;
+    overflow-wrap: anywhere;
+    text-align: right;
 }
 
 .pg-fracture__buttons button {
-  font-size: var(--pg-font-size-sm);
+    font-size: var(--pg-font-size-sm);
 }
 
-.pg-fracture__section .pg-control input[type="text"] {
-  font-family: var(--pg-font-mono);
+.pg-fracture__section .pg-control input[type='text'] {
+    font-family: var(--pg-font-mono);
 }

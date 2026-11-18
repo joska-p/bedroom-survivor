@@ -14,13 +14,13 @@ Do not force callers to materialize or transform data unnecessarily.
 
 ```ts
 function sum(values: Iterable<number>): number {
-  let total = 0;
+    let total = 0;
 
-  for (const value of values) {
-    total += value;
-  }
+    for (const value of values) {
+        total += value;
+    }
 
-  return total;
+    return total;
 }
 ```
 
@@ -30,9 +30,9 @@ Branded types can represent such guarantees when an API requires a value to have
 
 ```ts
 type NormalizedVector = {
-  x: number;
-  y: number;
-} & { __brand: "normalized" };
+    x: number;
+    y: number;
+} & { __brand: 'normalized' };
 ```
 
 A type-level guarantee is only as meaningful as the boundary that establishes it.

@@ -9,9 +9,9 @@ Règles de l'adversarial review :
 - Sois direct et concret.
 - Avant de juger, essaie de déterminer si ce code est une fondation (importé/utilisé ailleurs, appelé souvent, touche des données amenées à grossir) ou une exploration (proto isolé, en cours de changement). Adapte l'exigence en conséquence.
 - Pour chaque problème que tu trouves, explique :
-  1. Pourquoi c'est un problème
-  2. Quel risque ça crée
-  3. Comment tu le corrigerais (ou comment je devrais le comprendre)
+    1. Pourquoi c'est un problème
+    2. Quel risque ça crée
+    3. Comment tu le corrigerais (ou comment je devrais le comprendre)
 
 Points d'attention prioritaires pour moi :
 

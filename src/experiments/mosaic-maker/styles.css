@@ -1,114 +1,114 @@
 /* Mosaic Maker: only the generative tile grid and its palette data. */
 
 .pg-mosaic {
-  /* CSS contract mirrored here as a fallback; main.ts overrides via inline style. */
-  --tile-size: var(--pg-layout-mosaic-tile-size);
-  --mosaicGap: var(--pg-space-0);
-  --color-0: #333333;
-  --color-1: #555555;
-  --color-2: #777777;
-  --color-3: #999999;
-  --color-4: #bbbbbb;
-  --rotation-0: 0deg;
-  --rotation-1: 90deg;
-  --rotation-2: 180deg;
-  --rotation-3: 270deg;
+    /* CSS contract mirrored here as a fallback; main.ts overrides via inline style. */
+    --tile-size: var(--pg-layout-mosaic-tile-size);
+    --mosaicGap: var(--pg-space-0);
+    --color-0: #333333;
+    --color-1: #555555;
+    --color-2: #777777;
+    --color-3: #999999;
+    --color-4: #bbbbbb;
+    --rotation-0: 0deg;
+    --rotation-1: 90deg;
+    --rotation-2: 180deg;
+    --rotation-3: 270deg;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, var(--tile-size));
-  gap: var(--mosaicGap);
-  place-content: center;
-  flex: 1;
-  min-width: 0;
-  min-height: 0;
-  width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, var(--tile-size));
+    gap: var(--mosaicGap);
+    place-content: center;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
 }
 
 .pg-mosaic__tile,
 .pg-mosaic__tile-preview-svg {
-  flex-shrink: 0;
-  overflow: hidden;
-  width: var(--tile-size);
-  height: var(--tile-size);
-  transition: transform var(--pg-motion-duration-slow) var(--pg-motion-easing-out);
+    flex-shrink: 0;
+    overflow: hidden;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    transition: transform var(--pg-motion-duration-slow) var(--pg-motion-easing-out);
 }
 
 .pg-mosaic__tile-preview-svg {
-  --tile-size: var(--pg-layout-mosaic-tile-preview-size);
+    --tile-size: var(--pg-layout-mosaic-tile-preview-size);
 }
 
 .pg-mosaic__shape {
-  transition: fill var(--pg-motion-duration-slow) var(--pg-motion-easing-out);
+    transition: fill var(--pg-motion-duration-slow) var(--pg-motion-easing-out);
 }
 
 .pg-mosaic__tile-set {
-  --color-0: #333333;
-  --color-1: #555555;
-  --color-2: #777777;
-  --color-3: #999999;
-  --color-4: #bbbbbb;
+    --color-0: #333333;
+    --color-1: #555555;
+    --color-2: #777777;
+    --color-3: #999999;
+    --color-4: #bbbbbb;
 
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: center;
-  justify-items: center;
-  gap: var(--pg-space-3);
-  padding: var(--pg-space-2);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
+    gap: var(--pg-space-3);
+    padding: var(--pg-space-2);
 }
 
 .pg-mosaic__tile-button {
-  display: grid;
-  place-items: center;
-  padding: var(--pg-space-1);
+    display: grid;
+    place-items: center;
+    padding: var(--pg-space-1);
 }
 
-.pg-mosaic__tile-button[aria-pressed="true"] {
-  box-shadow: var(--pg-shadow-halo);
+.pg-mosaic__tile-button[aria-pressed='true'] {
+    box-shadow: var(--pg-shadow-halo);
 }
 
-.pg-mosaic__tile-button[aria-pressed="false"] {
-  opacity: 0.65;
+.pg-mosaic__tile-button[aria-pressed='false'] {
+    opacity: 0.65;
 }
 
 .pg-mosaic__tile-button:disabled {
-  cursor: not-allowed;
-  opacity: 1;
+    cursor: not-allowed;
+    opacity: 1;
 }
 
 .pg-mosaic__actions button {
-  font-size: var(--pg-font-size-sm);
+    font-size: var(--pg-font-size-sm);
 }
 
 .pg-mosaic__palette-option {
-  display: flex;
-  padding: var(--pg-space-2);
+    display: flex;
+    padding: var(--pg-space-2);
 }
 
-.pg-mosaic__palette-option[aria-checked="true"] {
-  box-shadow: var(--pg-shadow-halo);
+.pg-mosaic__palette-option[aria-checked='true'] {
+    box-shadow: var(--pg-shadow-halo);
 }
 
 .pg-mosaic__palette-strip {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: var(--pg-border-hairline) solid var(--pg-color-neutral);
-  border-radius: var(--pg-radius-md);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: var(--pg-border-hairline) solid var(--pg-color-neutral);
+    border-radius: var(--pg-radius-md);
 }
 
 .pg-mosaic__palette-swatch {
-  width: var(--pg-space-6);
-  height: var(--pg-space-6);
+    width: var(--pg-space-6);
+    height: var(--pg-space-6);
 }
 
 .pg-mosaic__palette-status.is-loading {
-  color: var(--pg-color-aurora);
-  animation: pg-mosaic-pulse var(--pg-motion-duration-slow) var(--pg-motion-easing-in-out)
-    var(--pg-motion-iteration-infinite);
+    color: var(--pg-color-aurora);
+    animation: pg-mosaic-pulse var(--pg-motion-duration-slow) var(--pg-motion-easing-in-out)
+        var(--pg-motion-iteration-infinite);
 }
 
 @keyframes pg-mosaic-pulse {
-  50% {
-    opacity: 0.5;
-  }
+    50% {
+        opacity: 0.5;
+    }
 }

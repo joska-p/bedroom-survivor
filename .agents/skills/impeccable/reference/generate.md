@@ -18,20 +18,20 @@ Three parts, all from the user's sentence:
 
 - **A number in the request**: that is the count. **No number**: 3. The protocol caps count at 8.
 - **The direction wording** maps onto the live action vocabulary; never invent a new action value:
-  - **bold, bolder, stronger, punchier**: `bolder`
-  - **quiet, calmer, softer, toned down**: `quieter`
-  - **simpler, minimal, stripped**: `distill`
-  - **refined, tightened, polished**: `polish`
-  - **font and type words**: `typeset`
-  - **color words**: `colorize`
-  - **arrangement and spacing words**: `layout`
-  - **device and breakpoint words**: `adapt`
-  - **motion words**: `animate`
-  - **playful words**: `delight`
-  - **rule-breaking words**: `overdrive`
-  - **Wording that carries intent but no vocabulary word** ("make it feel like a bank", "warmer", "more premium"): `impeccable`, with the user's wording passed as the prompt.
-  - **An action fits AND extra intent rides along** ("bolder, but keep it monochrome"): that action, with the rest as the prompt.
-  - **The wording names no direction at all** ("better", "improve", "nicer", "different", "fresh", "new", "redesign", "fix", "some options", "ideas", "alternatives", or just "variants" with nothing else): Ask the user directly to clarify what you cannot infer. Ask one question, offering the vocabulary: _"Which direction should the variants take? bolder, quieter, simpler (distill), polished, typography (typeset), color (colorize), layout, motion (animate), playful (delight), or rule-breaking (overdrive)."_ Map the answer with this list; an answer that is still open ("surprise me", "you pick") is `impeccable` with the user's original wording as the prompt, and Step 2 starts on that answer.
+    - **bold, bolder, stronger, punchier**: `bolder`
+    - **quiet, calmer, softer, toned down**: `quieter`
+    - **simpler, minimal, stripped**: `distill`
+    - **refined, tightened, polished**: `polish`
+    - **font and type words**: `typeset`
+    - **color words**: `colorize`
+    - **arrangement and spacing words**: `layout`
+    - **device and breakpoint words**: `adapt`
+    - **motion words**: `animate`
+    - **playful words**: `delight`
+    - **rule-breaking words**: `overdrive`
+    - **Wording that carries intent but no vocabulary word** ("make it feel like a bank", "warmer", "more premium"): `impeccable`, with the user's wording passed as the prompt.
+    - **An action fits AND extra intent rides along** ("bolder, but keep it monochrome"): that action, with the rest as the prompt.
+    - **The wording names no direction at all** ("better", "improve", "nicer", "different", "fresh", "new", "redesign", "fix", "some options", "ideas", "alternatives", or just "variants" with nothing else): Ask the user directly to clarify what you cannot infer. Ask one question, offering the vocabulary: _"Which direction should the variants take? bolder, quieter, simpler (distill), polished, typography (typeset), color (colorize), layout, motion (animate), playful (delight), or rule-breaking (overdrive)."_ Map the answer with this list; an answer that is still open ("surprise me", "you pick") is `impeccable` with the user's original wording as the prompt, and Step 2 starts on that answer.
 - **The element description** ("the pricing cards", "the hero heading"): Step 2 resolves it to a selector.
 
 Done when you hold an action from the vocabulary (asked for, when the request named no direction), a count from 1 to 8, and the element description.
@@ -42,8 +42,8 @@ Done when you hold an action from the vocabulary (asked for, when the request na
 
 1. **Find the dev server**, cheapest source first, and stop at the first hit: the user's message, a browser tab already on the app (Claude Code: an origin in `tabs_context`), a server your harness started (Claude Code: `preview_list`), a terminal that printed its URL. Its origin is your `--dev-url`. **No hit**: leave `--dev-url` off and run the start command with no wait; the boot probes for a running server and its verdict names the move. `browser_needed` carries the `devUrl` it found: open it as in 2, then rerun with `--dev-url <devUrl> --wait-for-browser 60000`. `no_dev_server` means nothing serves the app: start the dev script the way the verdict says (Claude Code: `preview_start`; Cursor: a background terminal; Codex: an exec you yield from), wait for its URL, then rerun with `--dev-url <url>`.
 2. **Open the page that renders the element in your browser, then start.** The route the request names, else the one `--target` serves; `--dev-url` takes only the origin.
-   - **Cursor** (`browser_navigate`) and **Claude Code** (`navigate`, which opens the Browser pane when it is closed and takes the `tabId` from `tabs_context` when a tab is already on that origin): open the URL, then run the start command with `--dev-url <url> --wait-for-browser 60000`. The boot injects the overlay and the page reloads into it while the command waits. Your browser tool is the only opener on these harnesses; the engine ignores `--open` there.
-   - **No browser tool** (Codex, others): run the start command with `--open --wait-for-browser 120000`; it opens the system browser, and the longer wait covers the user finding the tab. **`browser_open_failed` back**: tell the user the `url` in one line and rerun with `--wait-for-browser 120000`.
+    - **Cursor** (`browser_navigate`) and **Claude Code** (`navigate`, which opens the Browser pane when it is closed and takes the `tabId` from `tabs_context` when a tab is already on that origin): open the URL, then run the start command with `--dev-url <url> --wait-for-browser 60000`. The boot injects the overlay and the page reloads into it while the command waits. Your browser tool is the only opener on these harnesses; the engine ignores `--open` there.
+    - **No browser tool** (Codex, others): run the start command with `--open --wait-for-browser 120000`; it opens the system browser, and the longer wait covers the user finding the tab. **`browser_open_failed` back**: tell the user the `url` in one line and rerun with `--wait-for-browser 120000`.
 
 ```bash
 .github/skills/impeccable/scripts/impeccable live-generate --target src/App.jsx --dev-url http://127.0.0.1:5173/ --selector ".pricing-grid" --action bolder --count 3 --boot --wait-for-browser 60000

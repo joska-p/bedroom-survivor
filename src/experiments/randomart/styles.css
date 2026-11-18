@@ -1,28 +1,62 @@
 /* Randomart additions: state placeholders and page-specific narrow padding. */
 
 .pg-randomart__loading {
-  display: flex;
-  width: fit-content;
-  margin-top: var(--pg-space-3);
+    display: flex;
+    width: fit-content;
+    margin-top: var(--pg-space-3);
 }
 
 .pg-randomart__stats {
-  margin: 0;
+    margin: 0;
 }
 
 .pg-randomart__details {
-  font-size: var(--pg-font-size-sm);
+    font-size: var(--pg-font-size-sm);
 }
 
 .pg-randomart__details summary {
-  cursor: pointer;
-  color: var(--pg-text-muted);
+    cursor: pointer;
+    color: var(--pg-text-muted);
+}
+
+.pg-randomart__group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pg-space-2);
+}
+
+.pg-randomart__group-title {
+    margin: 0;
+    color: var(--pg-text-muted);
+    font-family: var(--pg-font-mono);
+    font-size: var(--pg-font-size-xs);
+}
+
+.pg-randomart__weights input[type='range'],
+.pg-randomart__structure input[type='range'] {
+    width: 100%;
+}
+
+.pg-randomart__formula {
+    font-family: var(--pg-font-mono);
+    font-size: var(--pg-font-size-xs);
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.pg-randomart__shader-code {
+    width: 100%;
+    resize: vertical;
+}
+
+.pg-randomart__panel-error {
+    margin: 0;
 }
 
 /* 720px literal: custom properties are not usable in @media conditions. */
 @media (max-width: 720px) {
-  .pg-shell__stage,
-  .pg-shell__content {
-    padding: var(--pg-space-3);
-  }
+    .pg-shell__stage,
+    .pg-shell__content {
+        padding: var(--pg-space-3);
+    }
 }

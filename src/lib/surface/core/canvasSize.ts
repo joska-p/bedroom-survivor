@@ -7,11 +7,11 @@
  * would make the transform disagree with the buffer.
  */
 export interface CanvasSize {
-  width: number;
-  height: number;
-  deviceWidth: number;
-  deviceHeight: number;
-  dpr: number;
+    width: number;
+    height: number;
+    deviceWidth: number;
+    deviceHeight: number;
+    dpr: number;
 }
 
 /**
@@ -19,30 +19,30 @@ export interface CanvasSize {
  * read, with an SSR-safe fallback of 1.
  */
 export function resolveDpr(dpr?: number): number {
-  if (dpr !== undefined) {
-    return dpr;
-  }
+    if (dpr !== undefined) {
+        return dpr;
+    }
 
-  return typeof window !== "undefined" ? (window.devicePixelRatio ?? 1) : 1;
+    return typeof window !== 'undefined' ? (window.devicePixelRatio ?? 1) : 1;
 }
 
 /** Measures the canvas in CSS pixels and derives its physical size for the given (or detected) DPR. */
 export function measureCanvas(canvas: HTMLCanvasElement, dpr?: number): CanvasSize {
-  const resolvedDpr = resolveDpr(dpr);
-  const rect =
-    typeof canvas.getBoundingClientRect === "function"
-      ? canvas.getBoundingClientRect()
-      : { width: canvas.clientWidth ?? 0, height: canvas.clientHeight ?? 0 };
-  const width = rect.width;
-  const height = rect.height;
+    const resolvedDpr = resolveDpr(dpr);
+    const rect =
+        typeof canvas.getBoundingClientRect === 'function'
+            ? canvas.getBoundingClientRect()
+            : { width: canvas.clientWidth ?? 0, height: canvas.clientHeight ?? 0 };
+    const width = rect.width;
+    const height = rect.height;
 
-  return {
-    width,
-    height,
-    deviceWidth: Math.round(width * resolvedDpr),
-    deviceHeight: Math.round(height * resolvedDpr),
-    dpr: resolvedDpr,
-  };
+    return {
+        width,
+        height,
+        deviceWidth: Math.round(width * resolvedDpr),
+        deviceHeight: Math.round(height * resolvedDpr),
+        dpr: resolvedDpr,
+    };
 }
 
 /**
@@ -51,11 +51,11 @@ export function measureCanvas(canvas: HTMLCanvasElement, dpr?: number): CanvasSi
  * their transform afterwards.
  */
 export function applyCanvasSize(canvas: HTMLCanvasElement, size: CanvasSize): void {
-  if (canvas.width !== size.deviceWidth) {
-    canvas.width = size.deviceWidth;
-  }
+    if (canvas.width !== size.deviceWidth) {
+        canvas.width = size.deviceWidth;
+    }
 
-  if (canvas.height !== size.deviceHeight) {
-    canvas.height = size.deviceHeight;
-  }
+    if (canvas.height !== size.deviceHeight) {
+        canvas.height = size.deviceHeight;
+    }
 }
