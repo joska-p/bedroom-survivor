@@ -13,7 +13,7 @@ experiment folder: `index.html`, `main.ts`, `styles.css` and co-located pure log
   module variables plus native DOM nodes created once. Selecting a drawing only toggles classes and
   updates text; the canvas, chart and gallery are never rebuilt on a control change.
 - **Shell and controls**: `initPage()` and `createSelect()` come from `src/ui/`. The shared
-  `ui/styles/page.css` entry is linked from the HTML; `styles.css` only adds experiment-specific
+  `ui/styles/main.css` entry is linked from the HTML; `styles.css` only adds experiment-specific
   rules. StyleX palette values became the `--pg-bright*` custom properties from the shared token
   sheet.
 - **Sketchpad**: `CanvasStage` owns the 2D context, DPR-aware backing store and `ResizeObserver`, but

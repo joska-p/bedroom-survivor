@@ -2,22 +2,12 @@
 
 This folder holds the shared CSS layer for all experiments:
 
-- `tokens.css` — design tokens (`--pg-*`), translated from the StyleX theme.
-- `reset.css` — minimal reset + document base (`color-scheme`, focus-visible, inherited fonts).
-- `shell.css` — shell layout (stage/panel, resizable handle, radial backgrounds).
-- `controls.css` — shared building blocks (intro, status, native controls, canvas viewport,
-  cards, sections, badges, empty/error/loading states, status pills).
-- `base.css` — import entry for light pages: tokens + reset + controls.
-- `page.css` — import entry for shell pages: base + shell.
-
 Pages link one shared entry, then their own `styles.css`:
 
 ```html
-<link rel="stylesheet" href="../../ui/styles/page.css" />
+<link rel="stylesheet" href="../../ui/styles/main.css" />
 <link rel="stylesheet" href="./styles.css" />
 ```
-
-For a light page (home, index), use `base.css` instead of `page.css`.
 
 ## Tokens (`--pg-*`)
 
@@ -103,35 +93,6 @@ will use the same token.
 When shader compilation fails, or WebGL2 is unavailable, add `.pg-canvas--error` to the canvas and
 reveal the `.pg-canvas__error.pg-error` overlay (`role="alert"`). Remove both on the next successful
 render, so the dimmed canvas and the error message never disagree.
-
-## Page pattern
-
-Every experiment page links `page.css` (or `base.css` for a light page), then its
-own `styles.css`. `main.ts` calls `initPage()` from `ui/page.ts` unless it owns a
-custom theme control.
-
-The markup skeleton:
-
-```html
-<pg-shell class="pg-shell" data-background="...">
-  <section class="pg-shell__stage pg-bg--..." aria-label="...">
-    <div class="pg-intro">
-      <h1>Title</h1>
-      <p class="pg-lead">One-line description.</p>
-    </div>
-    <!-- Experiment-specific content -->
-    <p class="pg-status" data-status aria-live="polite">Initial state.</p>
-  </section>
-  <aside class="pg-shell__panel" aria-label="Controls">
-    <button type="button" class="pg-shell__handle" aria-hidden="true" tabindex="-1">≶</button>
-    <div class="pg-shell__content">
-      <h2>Controls</h2>
-      <!-- Native controls via ui/controls.ts -->
-      <button type="button" data-theme-toggle>Thème</button>
-    </div>
-  </aside>
-</pg-shell>
-```
 
 ## Interaction & accessibility
 

@@ -28,9 +28,6 @@
   min-width: 0;
   min-height: 0;
   width: 100%;
-  padding: var(--pg-space-4);
-  border-radius: var(--pg-radius-md);
-  background-color: color-mix(in oklab, var(--pg-surface-background) 82%, transparent);
 }
 
 .pg-mosaic__tile,

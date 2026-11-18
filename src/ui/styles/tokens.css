@@ -43,7 +43,7 @@
   --pg-fadedOrange: oklch(0.513 0.162 39.297);
 
   /* Semantic colors */
-  --pg-surface-background: var(--pg-light0);
+  --pg-surface-background: color-mix(in oklch, var(--pg-light0) 50%, transparent);
   --pg-surface-foreground: var(--pg-dark0);
 
   --pg-color-neutral: var(--pg-light2);
@@ -163,7 +163,7 @@
 
 /* Dark theme — override only the values that change. */
 [data-theme="dark"] {
-  --pg-surface-background: var(--pg-dark0);
+  --pg-surface-background: color-mix(in oklch, var(--pg-dark0) 50%, transparent);
   --pg-surface-foreground: var(--pg-light0);
 
   --pg-color-neutral: var(--pg-dark2);

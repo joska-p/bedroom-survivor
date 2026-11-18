@@ -3,6 +3,8 @@
 .pg-home {
   /* No shared token defines a light-page content width; keep 72rem until D21. */
   max-width: 72rem;
+  height: 100%;
+  overflow-y: auto;
   margin: 0 auto;
   padding: var(--pg-space-8) var(--pg-space-6);
 }

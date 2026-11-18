@@ -1,0 +1,41 @@
+/*
+ * Shared page layer for light pages (home, indexes).
+ * Shell pages extend this with shell.css through page.css.
+ */
+
+@import "./tokens.css";
+@import "./reset.css";
+@import "./controls.css";
+@import "./shell.css";
+
+body {
+  height: 100dvh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image:
+    radial-gradient(
+      70% 60% at 15% 15%,
+      color-mix(in oklab, var(--pg-color-error) 50%, transparent),
+      transparent 80%
+    ),
+    radial-gradient(
+      65% 65% at 85% 20%,
+      color-mix(in oklab, var(--pg-color-orange) 45%, transparent),
+      transparent 80%
+    ),
+    radial-gradient(
+      75% 70% at 80% 80%,
+      color-mix(in oklab, var(--pg-color-purple) 40%, transparent),
+      transparent 80%
+    ),
+    radial-gradient(
+      60% 60% at 20% 85%,
+      color-mix(in oklab, var(--pg-color-aurora) 40%, transparent),
+      transparent 80%
+    ),
+    radial-gradient(
+      50% 50% at 50% 50%,
+      color-mix(in oklab, var(--pg-color-amber) 35%, transparent),
+      transparent 75%
+    );
+}
