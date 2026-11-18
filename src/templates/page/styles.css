@@ -1,0 +1,4 @@
+/*
+ * Page-local styles only. Shared tokens, reset, controls and shell live in
+ * src/ui/styles/. Use --pg-* tokens instead of hard-coded values.
+ */

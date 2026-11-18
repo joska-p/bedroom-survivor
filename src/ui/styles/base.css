@@ -1,0 +1,8 @@
+/*
+ * Shared page layer for light pages (home, indexes).
+ * Shell pages extend this with shell.css through page.css.
+ */
+
+@import "./tokens.css";
+@import "./reset.css";
+@import "./controls.css";

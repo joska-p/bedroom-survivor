@@ -1,0 +1,7 @@
+/*
+ * Shared page layer for shell pages: stage + resizable control panel.
+ * Page-local styles stay in the experiment's own styles.css.
+ */
+
+@import "./base.css";
+@import "./shell.css";

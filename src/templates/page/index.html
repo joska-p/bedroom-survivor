@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pg_lab — {{TITLE}}</title>
+    <link rel="stylesheet" href="../../ui/styles/page.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <pg-shell class="pg-shell" data-background="auroral-fluid">
+      <section class="pg-shell__stage pg-bg--auroral-fluid" aria-label="{{TITLE}}">
+        <div class="pg-intro">
+          <h1>{{TITLE}}</h1>
+          <p class="pg-lead">{{LEAD}}</p>
+        </div>
+
+        <!-- Experiment content goes here. -->
+
+        <p class="pg-status" data-status aria-live="polite">Prêt.</p>
+      </section>
+
+      <aside class="pg-shell__panel" aria-label="Contrôles">
+        <button type="button" class="pg-shell__handle" aria-hidden="true" tabindex="-1">≶</button>
+        <div class="pg-shell__content">
+          <h2>Contrôles</h2>
+
+          <!-- Controls go here. Use ui/controls.ts to fill mount points. -->
+
+          <button type="button" data-theme-toggle>Thème</button>
+        </div>
+      </aside>
+    </pg-shell>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
